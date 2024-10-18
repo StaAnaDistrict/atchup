@@ -26,7 +26,7 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     })
     .then(response => {
         console.log('Response received');
-        registrationMessage.textContent = 'Registration submitted! Please wait within 24 hours for approval.';
+        registrationMessage.textContent = 'Registration submitted! An email will be sent to you within 24 hours for confirmation.';
         registrationMessage.style.color = 'white';
 
         // Clear all input fields
