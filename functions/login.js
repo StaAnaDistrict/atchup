@@ -1,74 +1,44 @@
-const https = require('https');
+const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
-  console.log('Function invoked');
-  
   if (event.httpMethod !== 'POST') {
-    console.log('Method not allowed');
-    return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
   const { email, password } = JSON.parse(event.body);
-  console.log('Received credentials:', { email, password });
 
-  // URL of your Google Apps Script web app (replace with your new URL)
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxtWXjdvM6uzE_4yrg6Lw9BVfsGhapDVpAZq8Hw0Kkx0hRUWwWl1XuxVv6Q4uCkSM_Z/exec';
+  const API_KEY = 'AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
+  const SPREADSHEET_ID = '1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk';
+  const RANGE = 'UserRegistrations!A2:F'; // Updated to include all columns
 
-  return new Promise((resolve, reject) => {
-    console.log('Sending request to Google Apps Script');
-    const req = https.request(scriptUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    }, (res) => {
-      console.log('Received response from Google Apps Script');
-      console.log('Status Code:', res.statusCode);
-      console.log('Headers:', JSON.stringify(res.headers));
+  try {
+    const response = await fetch(
+      `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`
+    );
 
-      let data = '';
+    const data = await response.json();
 
-      res.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      res.on('end', () => {
-        console.log('Response data:', data);
-        try {
-          const parsedData = JSON.parse(data);
-          console.log('Parsed data:', parsedData);
-          if (parsedData.result === 'success') {
-            console.log('Login successful');
-            resolve({
-              statusCode: 200,
-              body: JSON.stringify({ result: 'success' })
-            });
-          } else {
-            console.log('Login failed');
-            resolve({
-              statusCode: 401,
-              body: JSON.stringify({ result: 'failure', message: parsedData.message || 'Invalid credentials' })
-            });
-          }
-        } catch (error) {
-          console.error('Error parsing response:', error);
-          reject({
-            statusCode: 500,
-            body: JSON.stringify({ result: 'error', message: 'Error parsing response', error: error.toString(), data: data })
-          });
+    if (data.values) {
+      for (let row of data.values) {
+        if (row[2] === email && row[3] === password) { // Email is in column C (index 2), Password in column D (index 3)
+          return {
+            statusCode: 200,
+            body: JSON.stringify({ result: 'success' })
+          };
         }
-      });
-    });
+      }
+    }
 
-    req.on('error', (error) => {
-      console.error('Error:', error);
-      reject({
-        statusCode: 500,
-        body: JSON.stringify({ result: 'error', message: error.message, error: error.toString() })
-      });
-    });
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ result: 'failure', message: 'Invalid credentials' })
+    };
 
-    req.write(JSON.stringify({ email, password, action: 'login' }));
-    req.end();
-  });
+  } catch (error) {
+    console.error('Error:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ result: 'error', message: 'An error occurred' })
+    };
+  }
 };
