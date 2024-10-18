@@ -4,6 +4,8 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     const registrationMessage = document.getElementById('registrationMessage');
+    const spinner = document.getElementById('spinner');
+    const overlay = document.getElementById('overlay');
 
     // Check if passwords match
     if (password !== confirmPassword) {
@@ -11,6 +13,13 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         registrationMessage.style.color = 'yellow';
         return; // Stop the form submission
     }
+
+    // Show spinner and overlay
+    spinner.style.display = 'block';
+    overlay.style.display = 'block';
+    // Hide any existing messages
+    registrationMessage.textContent = '';
+    registrationMessage.style.display = 'none';
 
     const formData = new FormData();
     formData.append('firstname', document.getElementById('firstname').value);
@@ -25,9 +34,14 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         body: formData
     })
     .then(response => {
+        // Hide spinner and overlay
+        spinner.style.display = 'none';
+        overlay.style.display = 'none';
+
         console.log('Response received');
         registrationMessage.textContent = 'Registration submitted! An email will be sent to you within 24 hours for confirmation.';
         registrationMessage.style.color = 'white';
+        registrationMessage.style.display = 'block';
 
         // Clear all input fields
         document.getElementById('registerForm').reset();
@@ -42,9 +56,14 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         });
     })
     .catch(error => {
+        // Hide spinner and overlay
+        spinner.style.display = 'none';
+        overlay.style.display = 'none';
+
         console.error('Error!', error.message);
         registrationMessage.textContent = 'An error occurred. Please try again.';
         registrationMessage.style.color = 'red';
+        registrationMessage.style.display = 'block';
     });
 });
 
