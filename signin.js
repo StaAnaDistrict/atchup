@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Login successful');
                 window.location.href = '/index.html';
             } else {
-                console.log('Login failed');
-                loginMessage.textContent = 'Invalid email or password';
+                console.log('Login failed:', data.message);
+                loginMessage.textContent = data.message || 'Invalid email or password';
                 loginMessage.style.display = 'block';
                 loginMessage.style.color = 'red';
             }
