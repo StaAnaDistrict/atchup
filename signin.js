@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         fetch('/.netlify/functions/login', {
             method: 'POST',
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password, action: 'login' })
         })
         .then(response => {
             console.log('Received response:', response);
