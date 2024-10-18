@@ -5,7 +5,7 @@ exports.handler = async (event, context) => {
   
   if (event.httpMethod !== 'POST') {
     console.log('Method not allowed');
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
   }
 
   const { email, password } = JSON.parse(event.body);
@@ -47,14 +47,14 @@ exports.handler = async (event, context) => {
             console.log('Login failed');
             resolve({
               statusCode: 401,
-              body: JSON.stringify({ result: 'failure' })
+              body: JSON.stringify({ result: 'failure', message: parsedData.message || 'Invalid credentials' })
             });
           }
         } catch (error) {
           console.error('Error parsing response:', error);
           reject({
             statusCode: 500,
-            body: JSON.stringify({ result: 'error', message: 'Error parsing response' })
+            body: JSON.stringify({ result: 'error', message: 'Error parsing response', error: error.toString() })
           });
         }
       });
@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
       console.error('Error:', error);
       reject({
         statusCode: 500,
-        body: JSON.stringify({ result: 'error', message: error.message })
+        body: JSON.stringify({ result: 'error', message: error.message, error: error.toString() })
       });
     });
 
