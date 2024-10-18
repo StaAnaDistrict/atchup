@@ -6,6 +6,7 @@ body {
     margin: 0;
     background-color: #121212;
     font-family: Arial, sans-serif;
+    height: 100%;
 }
 
 .form {
@@ -206,4 +207,27 @@ body {
     margin-top: 20px;
     text-align: center;
     width: 100%;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  width: 100%;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: #ffffff; /* White text color */
+  text-align: center;
+  font-size: 14px;
+}
+
+footer p {
+  margin: 0;
 }
