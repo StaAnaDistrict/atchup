@@ -29,16 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
         fetch('/.netlify/functions/login', {
             method: 'POST',
-            body: JSON.stringify({ email, password, action: 'login' })
+            body: JSON.stringify({ email, password })
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Parsed response data:', data);
             if (data.result === 'success') {
-                console.log('Login successful');
-                window.location.href = '/index.html';
+                localStorage.setItem('loggedInUser', email);
+                window.location.href = 'index.html';
             } else {
-                console.log('Login failed:', data.message);
                 loginMessage.textContent = data.message || 'Invalid email or password';
                 loginMessage.style.display = 'block';
                 loginMessage.style.color = 'red';
