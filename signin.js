@@ -25,16 +25,23 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
+        console.log('Attempting login with:', { email, password });
+    
         fetch('/.netlify/functions/login', {
             method: 'POST',
             body: JSON.stringify({ email, password })
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('Received response:', response);
+            return response.json();
+        })
         .then(data => {
+            console.log('Parsed response data:', data);
             if (data.result === 'success') {
+                console.log('Login successful');
                 window.location.href = '/index.html';
             } else {
+                console.log('Login failed');
                 loginMessage.textContent = 'Invalid email or password';
                 loginMessage.style.display = 'block';
                 loginMessage.style.color = 'red';
