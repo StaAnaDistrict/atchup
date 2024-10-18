@@ -1,5 +1,3 @@
-console.log('Script started');
-
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
@@ -9,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const forgotPasswordMessage = document.getElementById('forgotPasswordMessage');
+    const spinner = document.getElementById('spinner');
+    const overlay = document.getElementById('overlay');
 
     console.log('Elements:', {
         loginForm, forgotPasswordBtn, signUpBtn, loginButton, emailInput, passwordInput, loginMessage, forgotPasswordMessage
@@ -27,12 +27,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('password').value;
         console.log('Attempting login with:', { email, password });
     
+        // Show spinner and overlay
+        spinner.style.display = 'block';
+        overlay.style.display = 'block';
+        
         fetch('/.netlify/functions/login', {
             method: 'POST',
             body: JSON.stringify({ email, password })
         })
         .then(response => response.json())
         .then(data => {
+            // Hide spinner and overlay
+            spinner.style.display = 'none';
+            overlay.style.display = 'none';
+
             if (data.result === 'success') {
                 if (data.status === 'APPROVED') {
                     localStorage.setItem('loggedInUser', email);
@@ -53,6 +61,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 loginMessage.style.color = 'red';
             }
         })
+        .catch(error => {
+            // Hide spinner and overlay
+            spinner.style.display = 'none';
+            overlay.style.display = 'none';
+
+            console.error('Error:', error);
+            loginMessage.textContent = 'An error occurred. Please try again.';
+            loginMessage.style.display = 'block';
+            loginMessage.style.color = 'red';
+        });
     });
 
     if (forgotPasswordBtn) {
