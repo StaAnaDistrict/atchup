@@ -220,7 +220,7 @@ body {
   footer {
     width: 100%;
     padding: 20px 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: transparent;
     color: #ffffff; /* White text color */
     text-align: center;
     font-size: 14px;
