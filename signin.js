@@ -33,10 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.result === 'success') {
-                loginMessage.textContent = 'Login successful!';
-                loginMessage.style.display = 'block';
-                loginMessage.style.color = 'green';
-                // Redirect or perform other actions on successful login
+                window.location.href = '/index.html';
             } else {
                 loginMessage.textContent = 'Invalid email or password';
                 loginMessage.style.display = 'block';
