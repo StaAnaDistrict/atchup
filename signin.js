@@ -34,20 +34,25 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.result === 'success') {
-                localStorage.setItem('loggedInUser', email);
-                window.location.href = 'index.html';
+                if (data.status === 'APPROVED') {
+                    localStorage.setItem('loggedInUser', email);
+                    localStorage.setItem('userStatus', 'APPROVED');
+                    window.location.href = 'index.html';
+                } else if (data.status === 'DISAPPROVED') {
+                    loginMessage.textContent = 'Your account has been disapproved. Please contact the administrator.';
+                    loginMessage.style.display = 'block';
+                    loginMessage.style.color = 'red';
+                } else {
+                    loginMessage.textContent = 'Your account is pending approval. Please try again later.';
+                    loginMessage.style.display = 'block';
+                    loginMessage.style.color = 'orange';
+                }
             } else {
                 loginMessage.textContent = data.message || 'Invalid email or password';
                 loginMessage.style.display = 'block';
                 loginMessage.style.color = 'red';
             }
         })
-        .catch(error => {
-            console.error('Error:', error);
-            loginMessage.textContent = 'An error occurred. Please try again.';
-            loginMessage.style.display = 'block';
-            loginMessage.style.color = 'red';
-        });
     });
 
     if (forgotPasswordBtn) {
