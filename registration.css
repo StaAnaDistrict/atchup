@@ -35,7 +35,7 @@ body {
         #40c9ff,
         #e81cff
     );
-    animation: rotate 14s linear infinite;
+    animation: rotate 40s linear infinite;
 }
 
 .form::after {
