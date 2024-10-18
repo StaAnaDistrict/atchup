@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-In Page</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card2">
+                <form class="form" id="loginForm" method="POST" action="https://script.google.com/macros/s/AKfycby4S4V-MEMDFDM46FUdb1E61GJAdFfLf2GNUsYZGz0ZPjlxwhkExRgPhxG8AOaRCsJf/exec" target="hidden_iframe">
+                    <p id="heading">SACES Personnel Login</p>
+                    <div class="field">
+                        <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" class="input-icon">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                        <input type="email" class="input-field" placeholder="Registered Email" autocomplete="off" id="email" name="email" required />
+                    </div>
+                    <div class="field">
+                        <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" class="input-icon">
+                            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                        </svg>
+                        <input type="password" class="input-field" placeholder="Password" id="password" name="password" required />
+                    </div>
+                    <div class="btn">
+                        <button type="submit" class="button1" id="loginButton">Login</button>
+                        <button type="button" class="button2" id="signUpBtn">Sign Up</button>
+                    </div>
+                    <button type="button" class="button3" id="forgotPasswordBtn">Forgot Password</button>
+                    <p id="forgotPasswordMessage" style="display: none; color: white; text-align: center; margin-top: 1em;"></p>
+                    <p id="loginMessage" style="display: none; color: white; text-align: center; margin-top: 1em;"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<script src="signin.js?v=1" defer></script>
+</body>
+</html>

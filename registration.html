@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <div class="form-container">
+    <form class="form" id="registerForm">
+        <p class="title">Register</p>
+        <p class="message">Sign up now and get full access to our SACES Webapp.</p>
+        <div class="flex">
+            <label>
+                <input class="input" type="text" placeholder="" required="" id="firstname">
+                <span>First name</span>
+            </label>
+
+            <label>
+                <input class="input" type="text" placeholder="" required="" id="lastname">
+                <span>Last name</span>
+            </label>
+        </div>  
+                
+        <label>
+            <input class="input" type="email" placeholder="" required="" id="email">
+            <span>Email</span>
+        </label> 
+            
+        <label>
+            <input class="input" type="password" placeholder="" required="" id="password">
+            <span>Password</span>
+        </label>
+        <label>
+            <input class="input" type="password" placeholder="" required="" id="confirmPassword">
+            <span>Confirm password</span>
+        </label>
+        <button class="submit" type="submit">Submit</button>
+        <p class="signin">Already have an account? <a href="signin.html" id="signInLink">Sign in</a></p>
+    </form>
+    <p id="registrationMessage"></p>
+</div>
+<script src="register.js"></script>
+</body>
+</html>
