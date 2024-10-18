@@ -31,10 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: JSON.stringify({ email, password, action: 'login' })
         })
-        .then(response => {
-            console.log('Received response:', response);
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             console.log('Parsed response data:', data);
             if (data.result === 'success') {
