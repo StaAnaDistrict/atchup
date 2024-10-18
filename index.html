@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="styles.css">  
 </head>
 <body>
+  
+  <div id="userInfo" class="user-info">
+    <span id="loggedInUser"></span>
+    <button id="logoutBtn" class="logout-btn">Log out</button>
+  </div>
+
   <section class="parallax">
     <img src="https://i.imgur.com/kCPCM4U.png" id="layer1">
     <img src="https://i.imgur.com/Pg79VtJ.png" id="layer2">
@@ -75,6 +81,30 @@
   <footer>
     <p>&copy; 2023 SACES School Form 10 Generator by Sir Wedzmer Munjilul. All rights reserved.</p>
   </footer>
+
+  <script>
+    function checkLoginStatus() {
+      const loggedInUser = localStorage.getItem('loggedInUser');
+      const userInfoElement = document.getElementById('userInfo');
+      const loggedInUserElement = document.getElementById('loggedInUser');
+      
+      if (loggedInUser) {
+        loggedInUserElement.textContent = `Logged in as: ${loggedInUser}`;
+        userInfoElement.style.display = 'flex';
+      } else {
+        userInfoElement.style.display = 'none';
+        window.location.href = 'signin.html?message=Please log in to access this page.';
+      }
+    }
+  
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'signin.html';
+    });
+  
+    // Call this function when the page loads
+    window.addEventListener('DOMContentLoaded', checkLoginStatus);
+  </script>
   
   <script>
     let layer1 = document.getElementById('layer1');
