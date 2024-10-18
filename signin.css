@@ -221,11 +221,61 @@ body {
     width: 100%;
     padding: 20px 0;
     background-color: transparent;
-    color: #5a5858;
+    color: #5a5858; 
     text-align: center;
-    font-size: 8px;
+    font-size: 9px;
   }
   
   footer p {
     margin: 0;
+  }
+
+  .spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 1001;
+  }
+  
+  .spinner::before,
+  .spinner:after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+  }
+  
+  .spinner:before {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
+    animation: spin .5s infinite linear;
+  }
+  
+  .spinner:after {
+    width: 85%;
+    height: 85%;
+    background-color: #171717;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
   }
