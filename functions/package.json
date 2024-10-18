@@ -1,0 +1,9 @@
+{
+  "name": "login-function",
+  "version": "1.0.0",
+  "description": "Netlify function for login",
+  "main": "login.js",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
