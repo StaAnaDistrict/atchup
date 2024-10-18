@@ -11,8 +11,8 @@ exports.handler = async (event, context) => {
   const { email, password } = JSON.parse(event.body);
   console.log('Received credentials:', { email, password });
 
-  // URL of your Google Apps Script web app
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycby4S4V-MEMDFDM46FUdb1E61GJAdFfLf2GNUsYZGz0ZPjlxwhkExRgPhxG8AOaRCsJf/exec';
+  // URL of your Google Apps Script web app (replace with your new URL)
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxtWXjdvM6uzE_4yrg6Lw9BVfsGhapDVpAZq8Hw0Kkx0hRUWwWl1XuxVv6Q4uCkSM_Z/exec';
 
   return new Promise((resolve, reject) => {
     console.log('Sending request to Google Apps Script');
@@ -54,7 +54,7 @@ exports.handler = async (event, context) => {
           console.error('Error parsing response:', error);
           reject({
             statusCode: 500,
-            body: JSON.stringify({ result: 'error', message: 'Error parsing response', error: error.toString() })
+            body: JSON.stringify({ result: 'error', message: 'Error parsing response', error: error.toString(), data: data })
           });
         }
       });
