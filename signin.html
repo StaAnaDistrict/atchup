@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="signin.css">
 </head>
 <body>
+    <div id="customAlert" class="custom-alert">
+        <div class="alert-content">
+          <div class="alert-title">Unauthorized Access</div>
+          <div class="alert-message"></div>
+          <button id="closeAlert" class="close-alert">Close</button>
+        </div>
+      </div>
     <div class="container">
         <div class="card">
             <div class="card2">
@@ -42,13 +49,15 @@
       const urlParams = new URLSearchParams(window.location.search);
       const message = urlParams.get('message');
       if (message) {
-        const messageElement = document.createElement('div');
-        messageElement.textContent = message;
-        messageElement.style.color = 'red';
-        messageElement.style.marginBottom = '10px';
-        document.querySelector('form').prepend(messageElement);
+        const alertElement = document.getElementById('customAlert');
+        const messageElement = alertElement.querySelector('.alert-message');
         messageElement.innerHTML = `${message} <a href="registration.html">Register here</a>.`;
+        alertElement.style.display = 'flex';
       }
+    });
+  
+    document.getElementById('closeAlert').addEventListener('click', function() {
+      document.getElementById('customAlert').style.display = 'none';
     });
   </script>
 </body>
