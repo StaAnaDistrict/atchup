@@ -15,12 +15,17 @@ exports.handler = async (event, context) => {
   const scriptUrl = 'https://script.google.com/macros/s/AKfycby4S4V-MEMDFDM46FUdb1E61GJAdFfLf2GNUsYZGz0ZPjlxwhkExRgPhxG8AOaRCsJf/exec';
 
   return new Promise((resolve, reject) => {
+    console.log('Sending request to Google Apps Script');
     const req = https.request(scriptUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       }
     }, (res) => {
+      console.log('Received response from Google Apps Script');
+      console.log('Status Code:', res.statusCode);
+      console.log('Headers:', JSON.stringify(res.headers));
+
       let data = '';
 
       res.on('data', (chunk) => {
@@ -28,40 +33,42 @@ exports.handler = async (event, context) => {
       });
 
       res.on('end', () => {
-        console.log('Received response from Google Apps Script:', data);
+        console.log('Response data:', data);
         try {
           const parsedData = JSON.parse(data);
+          console.log('Parsed data:', parsedData);
           if (parsedData.result === 'success') {
             console.log('Login successful');
             resolve({
-              statusCode:
-              200,
-body: JSON.stringify({ result: 'success' })
-});
-} else {
-console.log('Login failed');
-resolve({
-statusCode: 401,
-body: JSON.stringify({ result: 'failure' })
-});
-}
-} catch (error) {
-console.error('Error parsing response:', error);
-reject({
-statusCode: 500,
-body: JSON.stringify({ result: 'error', message: 'Error parsing response' })
-});
-}
-});
-});
-req.on('error', (error) => {
-console.error('Error:', error);
-reject({
-statusCode: 500,
-body: JSON.stringify({ result: 'error', message: error.message })
-});
-});
-req.write(JSON.stringify({ email, password }));
-req.end();
-});
+              statusCode: 200,
+              body: JSON.stringify({ result: 'success' })
+            });
+          } else {
+            console.log('Login failed');
+            resolve({
+              statusCode: 401,
+              body: JSON.stringify({ result: 'failure' })
+            });
+          }
+        } catch (error) {
+          console.error('Error parsing response:', error);
+          reject({
+            statusCode: 500,
+            body: JSON.stringify({ result: 'error', message: 'Error parsing response' })
+          });
+        }
+      });
+    });
+
+    req.on('error', (error) => {
+      console.error('Error:', error);
+      reject({
+        statusCode: 500,
+        body: JSON.stringify({ result: 'error', message: error.message })
+      });
+    });
+
+    req.write(JSON.stringify({ email, password }));
+    req.end();
+  });
 };
