@@ -21,10 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
         loginMessage.style.color = 'red';
     }
 
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+    function attemptLogin() {
+        const email = emailInput.value;
+        const password = passwordInput.value;
         console.log('Attempting login with:', { email, password });
     
         // Show spinner and overlay
@@ -71,6 +70,27 @@ document.addEventListener('DOMContentLoaded', function() {
             loginMessage.style.display = 'block';
             loginMessage.style.color = 'red';
         });
+    }
+
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        attemptLogin();
+    });
+
+    // Add event listeners for "Enter" key press
+    emailInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            attemptLogin();
+        }
+    });
+
+    passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            attemptLogin();
+        }
+
     });
 
     if (forgotPasswordBtn) {
