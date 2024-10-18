@@ -68,7 +68,7 @@ exports.handler = async (event, context) => {
       });
     });
 
-    req.write(JSON.stringify({ email, password }));
+    req.write(JSON.stringify({ email, password, action: 'login' }));
     req.end();
   });
 };
