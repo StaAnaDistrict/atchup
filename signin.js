@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.status === 'APPROVED') {
                     localStorage.setItem('loggedInUser', email);
                     localStorage.setItem('userStatus', 'APPROVED');
-                    window.location.href = 'index.html';
+                    window.location.href = 'profile.html';
                 } else if (data.status === 'DISAPPROVED') {
                     loginMessage.textContent = 'Your account has been disapproved. Please contact the administrator.';
                     loginMessage.style.display = 'block';
