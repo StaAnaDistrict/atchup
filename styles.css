@@ -582,3 +582,13 @@ footer {
   border-radius: 5px;
   cursor: pointer;
 }
+
+footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            font-size: 0.9em;
+            color: #555;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ddd;
+        }
