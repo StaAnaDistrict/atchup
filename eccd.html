@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SACES School Form 10 Generator</title>
+  <title>SACES ATCHUP Early Childhood Care Development (ECCD) Checklist Generator</title>
   <link rel="stylesheet" href="styles.css">  
   
     <!-- Existing meta tags and title -->
@@ -12,21 +12,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://atchup.netlify.app">
     <meta property="og:title" content="SACES School Form 10 Generator">
-    <meta property="og:description" content="Sta. Ana Central Elementary School Davao City's School Form 10 Generator which was designed by Sir Wedzmer B. Munjilul. Access to the web application is limited only for authorized school personnel.">
+    <meta property="og:description" content="Sta. Ana Central Elementary School Davao City's Early Childhood Care Development (ECCD) Checklist Generator which was designed by Sir Wedzmer B. Munjilul. Access to the web application is limited only for authorized school personnel.">
     <meta property="og:image" content="https://i.imgur.com/GqC0tCW.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://atchup.netlify.app">
     <meta property="twitter:title" content="SACES School Form 10 Generator">
-    <meta property="twitter:description" content="Sta. Ana Central Elementary School Davao City's School Form 10 Generator which was designed by Sir Wedzmer B. Munjilul. Access to the web application is limited only for authorized school personnel.">
+    <meta property="twitter:description" content="Sta. Ana Central Elementary School Davao City's Early Childhood Care Development (ECCD) Checklist Generator which was designed by Sir Wedzmer B. Munjilul. Access to the web application is limited only for authorized school personnel.">
     <meta property="twitter:image" content="https://i.imgur.com/GqC0tCW.png">
 
 </head>
 <body>
     <script>
         window.addEventListener('beforeunload', function (e) {
-          // Cancel the event
+          // Cancel the event   
           e.preventDefault();
           // Chrome requires returnValue to be set
           e.returnValue = '';
@@ -110,8 +110,36 @@
 </label>
   </div>
   <footer>
-    <p>&copy; 2023 SACES School Form 10 Generator by Sir Wedzmer Munjilul. All rights reserved.</p>
+    <p>&copy; 2024 SACES ATCHUP Early Childhood Care Development (ECCD) Checklist Generator by Sir Wedzmer Munjilul. All rights reserved.</p>
   </footer>
+
+  <script>
+    function checkLoginStatus() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const userStatus = localStorage.getItem('userStatus');
+    const userInfoElement = document.getElementById('userInfo');
+    const loggedInUserElement = document.getElementById('loggedInUser');
+    
+    if (loggedInUser && userStatus === 'APPROVED') {
+        loggedInUserElement.textContent = `Logged in as: ${loggedInUser}`;
+        userInfoElement.style.display = 'flex';
+    } else {
+        userInfoElement.style.display = 'none';
+        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('userStatus');
+        window.location.href = 'signin.html?message=Please log in to access this page.';
+    }
+    }
+  
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+    localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('userStatus');
+    window.location.href = 'signin.html';
+});
+  
+    // Call this function when the page loads
+    window.addEventListener('DOMContentLoaded', checkLoginStatus);
+  </script>
   
   <script>
     let layer1 = document.getElementById('layer1');
