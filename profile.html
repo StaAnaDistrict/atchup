@@ -14,7 +14,7 @@
         <div class="links">
             <a href="https://atchup.netlify.app/eccd.html">ECCD Checklist Generator</a>
             <a href="https://atchup.netlify.app">School Form 10 Generator</a>
-            <a href="#" id="logoutLink">Logout</a>
+            <a href="https://atchup.netlify.app/signin.html" id="logoutLink">Logout</a>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
     <div class="container">
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="https://img.freepik.com/premium-vector/silver-membership-icon-default-avatar-profile-icon-membership-icon-social-media-user-image-vector-illustration_561158-4195.jpg?semt=ais_hybrid" alt="Profile Picture">
+            <img src="https://via.placeholder.com/100" alt="Profile Picture">
             <div class="name">User's Full Name</div>
             <div class="email">user@example.com</div>
         </div>
@@ -31,26 +31,49 @@
         <div class="updates-section">
             <h2>LATEST UPDATES</h2>
             <div class="updates-content">
-                <p>Welcome to the SACES ATCHUP Database Dashboard. Here you will find the latest updates and announcements for all users. This section scrolls independently to fit all important updates while keeping the overall layout clean and accessible.</p>
-                <p>Update 1: New features are now available in the ECCD Checklist Generator.</p>
-                <p>Update 2: Please remember to log out after your session to ensure security.</p>
-                <!-- More updates as needed -->
+                <p>Welcome to the SACES ATCHUP Database Dashboard. Here you will find the latest updates and announcements for all users.</p>
+                <!-- Other updates here -->
             </div>
         </div>
     </div>
 
-    <!-- JavaScript for Session Management -->
+    <!-- JavaScript for Session Management and Profile Fetching -->
     <script>
-        // Check login status and handle logout
-        function checkLoginStatus() {
+        // Check login status and fetch user details
+        async function checkLoginStatus() {
             const loggedInUser = localStorage.getItem('loggedInUser');
             const userStatus = localStorage.getItem('userStatus');
+            const nameElement = document.querySelector('.name');
+            const emailElement = document.querySelector('.email');
+            const userInfoElement = document.querySelector('.profile-section');
 
             if (loggedInUser && userStatus === 'APPROVED') {
-                document.querySelector('.name').textContent = loggedInUser;
-                document.querySelector('.email').textContent = `${loggedInUser}@example.com`;  // Placeholder email
+                // Set email address in profile
+                emailElement.textContent = loggedInUser;
+
+                // Fetch user's full name from Google Sheets API
+                const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
+
+                try {
+                    const response = await fetch(apiUrl);
+                    const data = await response.json();
+
+                    // Find user by email in column C and get their full name from column H
+                    const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
+                    
+                    if (userRow) {
+                        const fullName = userRow[5];  // Column H contains the full name
+                        nameElement.textContent = fullName || "Full Name Not Found";
+                    } else {
+                        nameElement.textContent = "User not registered";
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
+                    nameElement.textContent = "Error loading name";
+                }
             } else {
-                window.location.href = 'https://atchup.netlify.app/signin.html';
+                userInfoElement.style.display = 'none';
+                window.location.href = 'signin.html';
             }
         }
 
@@ -58,7 +81,7 @@
         document.getElementById('logoutLink').addEventListener('click', function () {
             localStorage.removeItem('loggedInUser');
             localStorage.removeItem('userStatus');
-            window.location.href = 'https://atchup.netlify.app/signin.html';
+            window.location.href = 'signin.html';
         });
 
         // Run check on page load
