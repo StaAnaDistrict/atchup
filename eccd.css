@@ -140,7 +140,7 @@ img {
     display: block;
   }
   
-  @media print {
+@media print {
     /* Ensure background colors are printed */
     body {
         -webkit-print-color-adjust: exact; /* For Chrome/Safari */
