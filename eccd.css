@@ -1,0 +1,163 @@
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: #010201; /* Dark background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input {
+    background-color: #010201;
+    border: none;
+    width: 425px;
+    height: 56px;
+    border-radius: 10px;
+    color: white;
+    padding-inline: 20px; /* Adjusted padding for better alignment */
+    font-size: 18px;
+}
+
+.input::placeholder {
+    color: #c0b9c0;
+}
+
+.input:focus {
+    outline: none;
+}
+
+#results-container {
+    margin-top: 20px;
+    /* Additional styles for results can be added here */
+}
+
+#search-icon {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+
+/* Button styles */
+.generate-btn {
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.generate-btn::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #ED1C24 0%, #FBD971 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.generate-btn:hover::before {
+    width: 9em;
+}
+
+.generate-btn:hover {
+    color: #ffffff;
+}
+
+/* Status message styles */
+#status {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+/* User info styles */
+.user-info {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    z-index: 1000;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table {
+    display: table;
+    width: 33%;
+    border-collapse: collapse;
+}
+
+.tr {
+    display: table-row;
+}
+
+.td {
+    display: table-cell;
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center; /* Center text in cells */
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  @media print {
+    /* Ensure background colors are printed */
+    body {
+        -webkit-print-color-adjust: exact; /* For Chrome/Safari */
+        print-color-adjust: exact; /* For Firefox */
+    }
+
+    /* Apply background colors to specific tables */
+    .table1 td,
+    .table2 td,
+    .table3 td,
+    .table4 td,
+    .table5 td,
+    .table6 td,
+    .table7 td,
+    .table8 td {
+        background-color: inherit; /* Ensure background colors are inherited */
+    }
+
+    /* You can also specify any other styles you want to apply during printing */
+}
