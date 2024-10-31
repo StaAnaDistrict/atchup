@@ -110,7 +110,7 @@
 </label>
   </div>
   <footer>
-    <p>&copy; 2024 SACES School Form 10 Generator by Sir Wedzmer Munjilul. All rights reserved.</p>
+    <p>&copy; 2023 SACES School Form 10 Generator by Sir Wedzmer Munjilul. All rights reserved.</p>
   </footer>
 
   <script>
@@ -2431,13 +2431,13 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
 
   switch (rowNumber) {
     case 7:
-      if (grade === 1 && schoolYearStart > 2023) {
+      if (grade === 1 && schoolYearStart > 2024) {
         q1 = scholasticData[148]; // Column ES
         q2 = scholasticData[170]; // Column FO
         q3 = scholasticData[192]; // Column GK
         q4 = scholasticData[214]; // Column HG
         final = scholasticData[236]; // Column IC
-      } else if (grade > 1 && schoolYearStart > 2023) {
+      } else if (grade > 1 && schoolYearStart > 2024) {
         q1 = scholasticData[134]; // Column EE
         q2 = scholasticData[156]; // Column FA
         q3 = scholasticData[178]; // Column FW
@@ -2452,13 +2452,13 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 8:
-      if (grade === 1 && schoolYearStart > 2023) {
+      if (grade === 1 && schoolYearStart > 2024) {
         q1 = scholasticData[149]; // Column ET
         q2 = scholasticData[171]; // Column FP
         q3 = scholasticData[193]; // Column GL
         q4 = scholasticData[215]; // Column HH
         final = scholasticData[237]; // Column ID
-      } else if (grade > 1 && schoolYearStart > 2023) {
+      } else if (grade > 1 && schoolYearStart > 2024) {
         q1 = scholasticData[135]; // Column EF
         q2 = scholasticData[157]; // Column FB
         q3 = scholasticData[179]; // Column FX
@@ -2473,7 +2473,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 9:
-      if (grade < 7 && schoolYearStart > 2023) {
+      if (grade < 7 && schoolYearStart > 2024) {
         q1 = scholasticData[136]; // Column EG
         q2 = scholasticData[158]; // Column FC
         q3 = scholasticData[180]; // Column FY
@@ -2488,7 +2488,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 10:
-      if (schoolYearStart > 2023) {
+      if (schoolYearStart > 2024) {
         if (grade < 4) {
           q1 = scholasticData[132]; // Column EC
           q2 = scholasticData[154]; // Column EY
@@ -2511,7 +2511,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 11:
-      if (grade < 7 && schoolYearStart > 2023) {
+      if (grade < 7 && schoolYearStart > 2024) {
         q1 = scholasticData[131]; // Column EB
         q2 = scholasticData[153]; // Column EX
         q3 = scholasticData[175]; // Column FT
@@ -2526,7 +2526,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 12:
-      if (grade < 3 && schoolYearStart > 2023) {
+      if (grade < 3 && schoolYearStart > 2024) {
         q1 = q2 = q3 = q4 = final = "";
       } else if (schoolYearStart > 2023 && grade < 7) {
         q1 = scholasticData[137]; // Column EH
@@ -2554,7 +2554,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 14:
-      if (schoolYearStart > 2023 && grade < 4) {
+      if (schoolYearStart > 2024 && grade < 4) {
         q1 = q2 = q3 = q4 = final = "";
       } else {
         q1 = scholasticData[146]; // Column EQ
@@ -2565,7 +2565,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 15:
-      if (schoolYearStart > 2023) {
+      if (schoolYearStart > 2024) {
         if (grade < 4) {
           q1 = q2 = q3 = q4 = final = "";
         } else if (grade >= 4) {
@@ -2584,7 +2584,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 16:
-      if (schoolYearStart > 2023) {
+      if (schoolYearStart > 2024) {
         if (grade < 4) {
           q1 = q2 = q3 = q4 = final = "";
         } else if (grade >= 4) {
@@ -2603,7 +2603,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 17:
-      if (schoolYearStart > 2023 && grade < 7) {
+      if (schoolYearStart > 2024 && grade < 7) {
         q1 = q2 = q3 = q4 = final = "";
       } else {
         q1 = scholasticData[142]; // Column EM
@@ -2614,7 +2614,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 18:
-      if (schoolYearStart > 2023 && grade < 7) {
+      if (schoolYearStart > 2024 && grade < 7) {
         q1 = q2 = q3 = q4 = final = "";
       } else {
         q1 = scholasticData[143]; // Column EN
@@ -2625,7 +2625,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 19:
-      if (schoolYearStart > 2023 && grade < 7) {
+      if (schoolYearStart > 2024 && grade < 7) {
         q1 = q2 = q3 = q4 = final = "";
       } else {
         q1 = scholasticData[147]; // Column ER
