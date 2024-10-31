@@ -1961,7 +1961,7 @@ function getLastSchoolYear(profileData) {
         if (rowNumber === 7) {
           if (grade === 1 && schoolYearStart > 2023) {
             return "Language";
-          } else if (grade > 1 && schoolYearStart > 2023) {
+          } else if (grade > 1 && schoolYearStart > 2024) {
             return "Filipino";
           } else {
             return "Mother Tongue";
@@ -1969,13 +1969,13 @@ function getLastSchoolYear(profileData) {
         } else if (rowNumber === 8) {
           if (grade === 1 && schoolYearStart > 2023) {
             return "Reading and Literacy";
-          } else if (grade > 1 && schoolYearStart > 2023) {
+          } else if (grade > 1 && schoolYearStart > 2024) {
             return "English";
           } else {
             return "Filipino";
           }
         } else if (rowNumber === 9) {
-          if (grade < 7 && schoolYearStart > 2023) {
+          if (grade < 7 && schoolYearStart > 2024) {
             return "Mathematics";
           } else {
             return "English";
@@ -1990,33 +1990,33 @@ function getLastSchoolYear(profileData) {
           }
           return "Mathematics";
         } else if (rowNumber === 11) {
-          if (grade < 7 && schoolYearStart > 2023) {
+          if (grade < 7 && schoolYearStart > 2024) {
             return "GMRC";
           } else {
             return "Science";
           }
         } else if (rowNumber === 12) {
-          if (grade < 3 && schoolYearStart > 2023) {
+          if (grade < 3 && schoolYearStart > 2024) {
             return ""; // Empty string for grades 1-2 after 2023
-          } else if (schoolYearStart > 2023 && grade < 7) {
+          } else if (schoolYearStart > 2024 && grade < 7) {
             return "Science";
           } else {
             return "Araling Panlipunan";
           }
         } else if (rowNumber === 13) {
-          if (schoolYearStart > 2023 && grade < 4) {
+          if (schoolYearStart > 2024 && grade < 4) {
             return ""; // Empty string for grades 1-3 after 2023
           } else {
             return "EPP / TLE";
           }
         } else if (rowNumber === 14) {
-          if (schoolYearStart > 2023 && grade < 4) {
+          if (schoolYearStart > 2024 && grade < 4) {
             return ""; // Empty string for grades 1-3 after 2023
           } else {
             return "MAPEH";
           }
         } else if (rowNumber === 15) {
-          if (schoolYearStart > 2023) {
+          if (schoolYearStart > 2024) {
             if (grade < 4) {
               return ""; // Empty string for grades 1-3 after 2023
             } else if (grade >= 4) {
@@ -2025,7 +2025,7 @@ function getLastSchoolYear(profileData) {
           }
           return "&nbsp;&nbsp;&nbsp;&nbsp;Music"; // Four non-breaking spaces before "Music" for all other cases
         } else if (rowNumber === 16) {
-          if (schoolYearStart > 2023) {
+          if (schoolYearStart > 2024) {
             if (grade < 4) {
               return ""; // Empty string for grades 1-3 after 2023
             } else if (grade >= 4) {
@@ -2034,19 +2034,19 @@ function getLastSchoolYear(profileData) {
           }
           return "&nbsp;&nbsp;&nbsp;&nbsp;Arts"; // Four non-breaking spaces before "Arts" for all other cases
         } else if (rowNumber === 17) {
-          if (schoolYearStart > 2023 && grade < 7) {
+          if (schoolYearStart > 2024 && grade < 7) {
             return ""; // Empty string for grades 1-6 after 2023
           } else {
             return "&nbsp;&nbsp;&nbsp;&nbsp;Physical Education"; // Four non-breaking spaces before "Physical Education" for all other cases
           }
         } else if (rowNumber === 18) {
-          if (schoolYearStart > 2023 && grade < 7) {
+          if (schoolYearStart > 2024 && grade < 7) {
             return ""; // Empty string for grades 1-6 after 2023
           } else {
             return "&nbsp;&nbsp;&nbsp;&nbsp;Health"; // Four non-breaking spaces before "Health" for all other cases
           }
         } else if (rowNumber === 19) {
-          if (schoolYearStart > 2023 && grade < 7) {
+          if (schoolYearStart > 2024 && grade < 7) {
             return ""; // Empty string for grades 1-6 after 2023
           } else {
             return "Eduk. sa Pagpapakatao"; // No leading spaces for this text
@@ -2543,7 +2543,7 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
       break;
     case 13:
-      if (schoolYearStart > 2023 && grade < 4) {
+      if (schoolYearStart > 2024 && grade < 4) {
         q1 = q2 = q3 = q4 = final = "";
       } else {
         q1 = scholasticData[139]; // Column EJ
