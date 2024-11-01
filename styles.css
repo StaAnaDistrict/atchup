@@ -584,11 +584,74 @@ footer {
 }
 
 footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
-            font-size: 0.9em;
-            color: #555;
-            background-color: transparent;
-            border-top: 1px solid #ddd;
-        }
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  font-size: 0.9em;
+  color: #555;
+  background-color: transparent;
+  border-top: 1px solid #ddd;
+}
+
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack items vertically */
+  z-index: 9999;
+  opacity: .9;
+  transition: opacity 1s ease-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+#tracingWM {
+  max-width: 30vw;
+  max-height: 30vh;
+}
+
+.trace-path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-dasharray: 4500;
+  animation: draw 8s ease forwards;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 4500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+#floatingText {
+  margin-top: 20px; /* Space below the SVG */
+  font-size: 1.5em;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px); /* Start 20px lower */
+  animation: floatText 1s ease-out forwards;
+  animation-delay: 2s; /* Delay to match SVG trace completion */
+}
+
+@keyframes floatText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
