@@ -642,6 +642,8 @@ footer {
   transform: translateY(20px); /* Start 20px lower */
   animation: floatText 1s ease-out forwards;
   animation-delay: 2s; /* Delay to match SVG trace completion */
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 10px;
 }
 
 @keyframes floatText {
