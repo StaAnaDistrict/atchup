@@ -592,6 +592,7 @@ footer {
   background-color: transparent;
   border-top: 1px solid #ddd;
 }
+
 #loadingOverlay {
   position: fixed;
   top: 0;
@@ -613,8 +614,8 @@ footer {
 }
 
 #tracingWM {
-  max-width: 30vw;
-  max-height: 30vh;
+  max-width: 50vw;
+  max-height: 50vh;
 }
 
 .trace-path {
@@ -622,7 +623,7 @@ footer {
   stroke: #fff;
   stroke-width: 3px;
   stroke-dasharray: 4500;
-  animation: draw 8s ease forwards;
+  animation: draw 8s ease;
 }
 
 @keyframes draw {
@@ -634,9 +635,10 @@ footer {
   }
 }
 
+
 #floatingText {
-  margin-top: 20px; /* Space below the SVG */
-  font-size: 1.5em;
+  
+  font-size: 2.5em;
   color: #fff;
   opacity: 0;
   transform: translateY(20px); /* Start 20px lower */
