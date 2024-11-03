@@ -1,3 +1,7 @@
+html {
+  overscroll-behavior: none;
+}
+
 body {
   min-height: 100vh;
   overflow-x: hidden;
@@ -12,6 +16,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #ffffff;
+  overscroll-behavior: none;
 }
 
 .parallax {
@@ -599,14 +604,15 @@ footer {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to bottom, #590050, #203a43, #3d4400);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column; /* Stack items vertically */
   z-index: 9999;
   opacity: .9;
-  transition: opacity 1s ease-out;
+  transition: opacity 5s ease-out;
+  margin-bottom: 0px;
 }
 
 .fade-out {
@@ -619,11 +625,11 @@ footer {
 }
 
 .trace-path {
-  fill: none;
-  stroke: #fff;
+  fill: none; /* Remove fill, since we're using stroke */
+  stroke: url(#traceGradient); /* Use the gradient for the stroke */
   stroke-width: 3px;
   stroke-dasharray: 4500;
-  animation: draw 8s ease;
+  animation: draw 15s ease; /* Adjust duration as needed */
 }
 
 @keyframes draw {
@@ -639,13 +645,18 @@ footer {
 #floatingText {
   
   font-size: 2.5em;
-  color: #fff;
+  background: linear-gradient(45deg, #fc9a84, #FFC300, #f7f2a6); /* Match SVG gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Ensures gradient visibility */
   opacity: 0;
   transform: translateY(20px); /* Start 20px lower */
   animation: floatText 1s ease-out forwards;
   animation-delay: 2s; /* Delay to match SVG trace completion */
   font-family: 'Times New Roman', Times, serif;
-  letter-spacing: 10px;
+  letter-spacing: 50px;
+  margin-top: 1PX;
+  text-align: center;
+  padding-left: 50px;
 }
 
 @keyframes floatText {
@@ -656,5 +667,16 @@ footer {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes gradientAnimation {
+  0% {
+    stop-color: #FF5733;
+  }
+  50% {
+    stop-color: #FFC300;
+  }
+  100% {
+    stop-color: #DAF7A6;
   }
 }
