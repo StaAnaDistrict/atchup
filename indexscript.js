@@ -66,6 +66,32 @@
         }
     });
 
+    function checkLoginStatus() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const userStatus = localStorage.getItem('userStatus');
+    const userInfoElement = document.getElementById('userInfo');
+    const loggedInUserElement = document.getElementById('loggedInUser');
+
+    if (loggedInUser && userStatus === 'APPROVED') {
+        loggedInUserElement.textContent = `Logged in as: ${loggedInUser}`;
+        userInfoElement.style.display = 'flex';
+    } else {
+        userInfoElement.style.display = 'none';
+        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('userStatus');
+        window.location.href = 'signin.html?message=Please log in to access this page.';
+    }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+    localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('userStatus');
+    window.location.href = 'signin.html';
+});
+
+    // Call this function when the page loads
+    window.addEventListener('DOMContentLoaded', checkLoginStatus);
+
     document.addEventListener('DOMContentLoaded', function() {
         checkDatabaseStatus();
         
