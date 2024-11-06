@@ -972,11 +972,11 @@
 
         // Filter profile data
         const filteredProfileData = profileData.values.filter(row => row[0].toLowerCase().includes(searchInput.toLowerCase()));
-        console.log("Filtered profile data:", filteredProfileData);
+        
 
         // Filter scholastic data
         const filteredScholasticData = scholasticData.values.filter(row => row[0].toLowerCase().includes(searchInput.toLowerCase()));
-        console.log("Filtered scholastic data:", filteredScholasticData);
+        
 
         if (filteredProfileData.length > 0 && filteredScholasticData.length > 0) {
           const processedProfileData = processData(filteredProfileData[0]);
@@ -1012,7 +1012,7 @@
     }
 
     function displaySignature(value, maxWidth) {
-      console.log("Signature value:", value); // Debugging line
+      
       if (isEmpty(value)) {
         return `<span class="empty-signature" style="display:inline-block; width:${maxWidth}px; border-bottom:1px solid black;">&nbsp;</span>`;
       }
@@ -1026,8 +1026,6 @@
 
     function openResultsWindow(profileData, scholasticData, searchName) {
       const resultsWindow = window.open('', `SF-10 of ${searchName}`, 'width=1000,height=800');
-      console.log("Processed profile data array:", profileData);
-      console.log("Processed scholastic data array:", scholasticData);
 
       resultsWindow.document.write(`
         <html>
@@ -1963,15 +1961,10 @@
 
   // Define the populateCertificationTable function in the new window
   resultsWindow.populateCertificationTable = function(profileData, scholasticData, searchName) {
-    console.log("populateCertificationTable called");
-    console.log("profileData:", profileData);
-    console.log("scholasticData:", scholasticData);
+    
 
     const row2 = this.document.getElementById('certification-row-2');
     const row3 = this.document.getElementById('certification-row-3');
-
-    console.log("row2:", row2);
-    console.log("row3:", row3);
 
     if (!row2 || !row3) {
       console.error("Certification rows not found in the DOM");
@@ -1982,9 +1975,7 @@
     const lrn = profileData[5] || 'N/A';
     const nextGrade = getNextGrade(profileData, scholasticData);
 
-    console.log("learnerName:", learnerName);
-    console.log("lrn:", lrn);
-    console.log("nextGrade:", nextGrade);
+    
 
     row2.innerHTML = `<b>I CERTIFY that this is a true record of</b> <u>${learnerName}</u> <b>with LRN</b> <u>${lrn}</u> <b>and that he/she is eligible for admission to Grade</b> <u>${nextGrade}</u>.`;
 
@@ -1993,14 +1984,11 @@
     const division = profileData[25] || 'N/A';
     const lastSchoolYear = getLastSchoolYear(profileData);
 
-    console.log("schoolName:", schoolName);
-    console.log("schoolId:", schoolId);
-    console.log("division:", division);
-    console.log("lastSchoolYear:", lastSchoolYear);
+    
 
     row3.innerHTML = `<b>School Name:</b> <u>${schoolName}</u> <b>School ID:</b> <u>${schoolId}</u> <b>Division:</b> <u>${division}</u> <b>Last School Year Attended:</b> <u>${lastSchoolYear}</u>`;
 
-    console.log("Certification table populated");
+    
   };
 
   // Call the function with the data when the window is loaded
@@ -2012,7 +2000,7 @@
 
 // Define these functions in the main window scope
 function getNextGrade(profileData, scholasticData) {
-  console.log("Starting getNextGrade function");
+  
 
   const gradeFunctions = [
     getGradeData,
@@ -2039,23 +2027,23 @@ function getNextGrade(profileData, scholasticData) {
       schoolYearValue = profileData[32 + (boxNumber - 2) * 9]; // Adjusted index for school year
     }
 
-    console.log(`Box ${boxNumber} input:`, { gradeValue, schoolYearValue });
+    
 
     if (gradeValue && schoolYearValue) {
       const result = gradeFunctions[i](22, gradeValue, schoolYearValue, scholasticData, 1);
-      console.log(`Box ${boxNumber} result: ${JSON.stringify(result)}`);
+      
       
       if (result.remarks === "PROMOTED") {
         promotedCount++;
-        console.log(`Promoted count increased to ${promotedCount}`);
+      
       }
     } else {
-      console.log(`Box ${boxNumber} is empty or incomplete`);
+      
     }
   }
 
   const nextGrade = promotedCount + 1;
-  console.log(`Final Next Grade: ${nextGrade}`);
+  
   return nextGrade;
 }
 
@@ -2066,7 +2054,7 @@ function getLastSchoolYear(profileData) {
   for (let index of boxIndices) {
     const schoolYearValue = profileData[index];
     if (schoolYearValue && schoolYearValue.trim() !== "") {
-      console.log(`Returning school year from Box ${8 - boxIndices.indexOf(index)}: ${schoolYearValue}`);
+      
       return schoolYearValue;
     }
   }
@@ -2074,13 +2062,13 @@ function getLastSchoolYear(profileData) {
   // If no school year found in boxes 8 to 3, check Box 2
   const box2SchoolYear = profileData[32];
   if (box2SchoolYear && box2SchoolYear.trim() !== "") {
-    console.log(`Returning school year from Box 2: ${box2SchoolYear}`);
+    
     return box2SchoolYear;
   }
 
   // If Box 2 is also empty, use Box 1
   const box1SchoolYear = profileData[20];
-  console.log(`Returning school year from Box 1: ${box1SchoolYear}`);
+  
   return box1SchoolYear || "";
 }
 
@@ -3185,12 +3173,12 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       }
 
       function getGradeDataBox2(rowNumber, gradeValue, schoolYearValue, scholasticData) {
-  console.log(`getGradeDataBox2 called with:`, { rowNumber, gradeValue, schoolYearValue });
+  
   
   let q1 = '', q2 = '', q3 = '', q4 = '', final = '', remarks = '';
 
   if (!gradeValue || !schoolYearValue) {
-    console.log('Box 2: No grade or school year value, returning empty result');
+    
     return { q1, q2, q3, q4, final, remarks };
   }
 
@@ -3437,13 +3425,13 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       break;
   }
 
-  console.log(`Box 2: Calculated grades:`, { q1, q2, q3, q4, final });
+  ;
 
   // Determine remarks
   if (rowNumber === 22) {
     if (final === "") {
       remarks = "";
-      console.log('Box 2: Final grade is empty, setting remarks to empty string');
+      
     } else {
       const failedCount = [7, 8, 9, 10, 11, 12, 13, 14, 18].reduce((count, row) => {
         const rowFinal = getGradeDataBox2(row, gradeValue, schoolYearValue, scholasticData).final;
@@ -3460,30 +3448,27 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
       } else {
         remarks = "REMEDIAL";
       }
-      console.log(`Box 2: Set remarks to ${remarks} based on failed count`);
+      
     }
   } else {
     remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
-    console.log(`Box 2: Set remarks to ${remarks} based on final grade`);
+    
   }
 
-  console.log(`Box 2: Final result:`, { q1, q2, q3, q4, final, remarks });
+  
   return { q1, q2, q3, q4, final, remarks };
 }
       }
 
 function getGradeDataBox3(rowNumber, gradeValue, schoolYearValue, scholasticData) {
 
-  console.log(`getGradeDataBox3 input: rowNumber=${rowNumber}, gradeValue=${gradeValue}, schoolYearValue=${schoolYearValue}`);
+  
   
   // Check for empty, "NA", or "#N/A" values
   if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
-    console.log("Box 3: Empty grade or school year value detected. Returning empty result.");
+  
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
-
-  console.log(`scholasticData length: ${scholasticData.length}`);
-  console.log(`First few elements of scholasticData: ${JSON.stringify(scholasticData.slice(0, 5))}`);
 
   const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
   const grade = parseInt(gradeValue, 10);
@@ -3764,16 +3749,14 @@ return { q1, q2, q3, q4, final, remarks };
 }
 
 function getGradeDataBox4(rowNumber, gradeValue, schoolYearValue, scholasticData) {
-  console.log(`getGradeDataBox4 input: rowNumber=${rowNumber}, gradeValue=${gradeValue}, schoolYearValue=${schoolYearValue}`);
+  
   
   // Check for empty, "NA", or "#N/A" values
   if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
-    console.log("Box 4: Empty grade or school year value detected. Returning empty result.");
+    
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
 
-  console.log(`scholasticData length: ${scholasticData.length}`);
-  console.log(`First few elements of scholasticData: ${JSON.stringify(scholasticData.slice(0, 5))}`);
 
   const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
   const grade = parseInt(gradeValue, 10);
@@ -4063,11 +4046,11 @@ function getGradeDataBox4(rowNumber, gradeValue, schoolYearValue, scholasticData
       remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
     }
 
-    console.log(`Retrieved values for row ${rowNumber}: q1=${q1}, q2=${q2}, q3=${q3}, q4=${q4}, final=${final}, remarks=${remarks}`);
+    
 
     return { q1, q2, q3, q4, final, remarks };
   } catch (error) {
-    console.error(`Error in getGradeDataBox4 for row ${rowNumber}:`, error);
+    
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
 }
@@ -4078,7 +4061,7 @@ function createBox2(profileData, scholasticData) {
   const schoolYearValue = profileData[32]; // AG for Box 2
   const signatureValue = profileData[103]; // Column CT for Box 2 signature
 
-  console.log(`Box 2 - Grade: ${gradeValue}, School Year: ${schoolYearValue}`);
+  
 
   let gradesSection = `
     <!-- Grades Section Header (Rows 5 and 6) -->
@@ -4180,16 +4163,16 @@ function createBox2(profileData, scholasticData) {
 }
 
 function getGradeDataBox5(rowNumber, gradeValue, schoolYearValue, scholasticData) {
-  console.log(`getGradeDataBox5 input: rowNumber=${rowNumber}, gradeValue=${gradeValue}, schoolYearValue=${schoolYearValue}`);
+  
   
   if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
-    console.log("Box 5: Empty grade or school year value detected. Returning empty result.");
+  
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
 
   const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
   const grade = parseInt(gradeValue, 10);
-const sanitizeValue = (value) => (value === undefined || value === null || value === '') ? '' : value;
+  const sanitizeValue = (value) => (value === undefined || value === null || value === '') ? '' : value;
 
 
   let q1 = '', q2 = '', q3 = '', q4 = '', final = '', remarks = '';
@@ -4467,17 +4450,17 @@ const sanitizeValue = (value) => (value === undefined || value === null || value
       remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
     }
 
-    console.log(`Retrieved values for row ${rowNumber}: q1=${q1}, q2=${q2}, q3=${q3}, q4=${q4}, final=${final}, remarks=${remarks}`);
+    
 
     return { q1, q2, q3, q4, final, remarks };
   } catch (error) {
-    console.error(`Error in getGradeDataBox5 for row ${rowNumber}:`, error);
+    
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
 }
 
 function getGradeDataBox6(rowNumber, gradeValue, schoolYearValue, scholasticData) {
-  console.log(`getGradeDataBox6 input: rowNumber=${rowNumber}, gradeValue=${gradeValue}, schoolYearValue=${schoolYearValue}`);
+  
   
   if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
     console.log("Box 6: Empty grade or school year value detected. Returning empty result.");
@@ -4761,16 +4744,16 @@ function getGradeDataBox6(rowNumber, gradeValue, schoolYearValue, scholasticData
     remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
   }
 
-  console.log(`Retrieved values for row ${rowNumber}: q1=${q1}, q2=${q2}, q3=${q3}, q4=${q4}, final=${final}, remarks=${remarks}`);
+  
 
   return { q1, q2, q3, q4, final, remarks };
 }
 
 function getGradeDataBox7(rowNumber, gradeValue, schoolYearValue, scholasticData) {
-  console.log(`getGradeDataBox7 input: rowNumber=${rowNumber}, gradeValue=${gradeValue}, schoolYearValue=${schoolYearValue}`);
+  
   
   if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
-    console.log("Box 7: Empty grade or school year value detected. Returning empty result.");
+    
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
 
@@ -5066,16 +5049,12 @@ function getGradeDataBox7(rowNumber, gradeValue, schoolYearValue, scholasticData
     remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
   }
 
-  console.log(`Retrieved values for row ${rowNumber}: q1=${q1}, q2=${q2}, q3=${q3}, q4=${q4}, final=${final}, remarks=${remarks}`);
-
   return { q1, q2, q3, q4, final, remarks };
 }
 
 function getGradeDataBox8(rowNumber, gradeValue, schoolYearValue, scholasticData) {
-  console.log(`getGradeDataBox8 input: rowNumber=${rowNumber}, gradeValue=${gradeValue}, schoolYearValue=${schoolYearValue}`);
   
   if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
-    console.log("Box 8: Empty grade or school year value detected. Returning empty result.");
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
 
@@ -5369,8 +5348,6 @@ function getGradeDataBox8(rowNumber, gradeValue, schoolYearValue, scholasticData
   } else {
     remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
   }
-
-  console.log(`Retrieved values for row ${rowNumber}: q1=${q1}, q2=${q2}, q3=${q3}, q4=${q4}, final=${final}, remarks=${remarks}`);
 
   return { q1, q2, q3, q4, final, remarks };
 }
