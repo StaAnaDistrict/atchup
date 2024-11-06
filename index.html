@@ -3435,11 +3435,11 @@ function getGradeData(rowNumber, gradeValue, schoolYearValue, scholasticData, bo
     } else {
       const failedCount = [7, 8, 9, 10, 11, 12, 13, 14, 18].reduce((count, row) => {
         const rowFinal = getGradeDataBox2(row, gradeValue, schoolYearValue, scholasticData).final;
-        console.log(`Box 2: Checking row ${row}, final grade: ${rowFinal}`);
+        
         return count + (rowFinal !== "" && parseFloat(rowFinal) < 75 ? 1 : 0);
       }, 0);
 
-      console.log(`Box 2: Failed count: ${failedCount}`);
+      
 
       if (failedCount > 2) {
         remarks = "RETAINED";
@@ -4463,7 +4463,7 @@ function getGradeDataBox6(rowNumber, gradeValue, schoolYearValue, scholasticData
   
   
   if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
-    console.log("Box 6: Empty grade or school year value detected. Returning empty result.");
+    
     return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
   }
 
