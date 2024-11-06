@@ -711,24 +711,39 @@
 
   
 <script>
-  window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault();
-    // Chrome requires returnValue to be set
-    e.returnValue = '';
+  document.addEventListener('DOMContentLoaded', function() {
+  const loadingOverlay = document.getElementById('loadingOverlay');
 
-    // Perform logout
-    localStorage.removeItem('loggedInUser');
-    localStorage.removeItem('userStatus');
-
-    // Note: You can't make asynchronous calls here, so any server-side logout
-    // would need to be handled differently
+  window.addEventListener('load', function() {
+    setTimeout(() => {
+      loadingOverlay.classList.add('fade-out');
+      setTimeout(() => {
+        loadingOverlay.style.display = 'none';
+      }, 500); // Match this with CSS transition duration
+    }, 5000); // Delay to match trace and float animations
   });
-</script>  
-  <div id="userInfo" class="user-info">
-    <span id="loggedInUser"></span>
-    <button id="logoutBtn" class="logout-btn">Log out</button>
-  </div>
+});
+
+    </script>
+    <script>
+        window.addEventListener('beforeunload', function (e) {
+          // Cancel the event   
+          e.preventDefault();
+          // Chrome requires returnValue to be set
+          e.returnValue = '';
+      
+          // Perform logout
+          localStorage.removeItem('loggedInUser');
+          localStorage.removeItem('userStatus');
+      
+          // Note: You can't make asynchronous calls here, so any server-side logout
+          // would need to be handled differently
+        });
+      </script>  
+      <div id="userInfo" class="user-info">
+        <span id="loggedInUser"></span>
+        <button id="logoutBtn" class="logout-btn">Log out</button>
+      </div>
 
   <section class="parallax">
     <img src="https://i.imgur.com/kCPCM4U.png" id="layer1">
