@@ -1,4 +1,4 @@
-
+//paguwaun in tandawan bahgu
 function openResultsWindow(
     fullName,
     yrsOld,
@@ -65,13 +65,16 @@ function openResultsWindow(
         <title>Results for ${fullName}</title>
         <style>
             @media print {
-    /* Ensure background colors are printed */
+    
+    /* pagpaawn sin kolor hapabila iprint */
+    
     body {
         -webkit-print-color-adjust: exact; /* For Chrome/Safari */
         print-color-adjust: exact; /* For Firefox */
     }
 
-    /* Apply background colors to specific tables */
+    /* isangun in mga kolor ha mga lamesahan */
+    
     .table1 td,
     .table2 td,
     .table3 td,
@@ -80,10 +83,10 @@ function openResultsWindow(
     .table6 td,
     .table7 td,
     .table8 td {
-        background-color: inherit; /* Ensure background colors are inherited */
+        background-color: inherit; 
     }
 
-    /* You can also specify any other styles you want to apply during printing */
+    
 }
 
 
@@ -111,7 +114,7 @@ function openResultsWindow(
             }
 
             .table11-2 {
-                margin-top: 90px; /* Adjust this value as needed to create the desired spacing */
+                margin-top: 90px; /* spacing mga lamesahan */
             }
 
             table {
@@ -138,18 +141,20 @@ function openResultsWindow(
             .table1 col:nth-child(5) { width: 11%; }
             .table1 col:nth-child(6) { width: 11%; }
 
-            /* Specific alignment for Column 1 and Column 2 in Table 1 and Table 2 */
+            /* pagpabuntul sin lamesahan awwal iban hikaruwa */
+            
             .table1 td:nth-child(1), .table1 td:nth-child(2),
             .table2 td:nth-child(2) {
                 text-align: left;
             }
 
-            /* Bold font for specific cells */
+            
             .bold {
                 font-weight: bold;
             }
             
-            /*Table 3 Border Properts */
+            /* hika-tuh lamesahan */
+            
             .table3, table8 {
                 border: none;
                 box-shadow: none;
@@ -159,7 +164,8 @@ function openResultsWindow(
                 box-shadow: none;
             }
 
-            /* Column width for Table 2 */
+            /* ikaruwa lameesahan */
+            
             .table2 col:nth-child(1) { width: 2%; }
             .table2 col:nth-child(2) { width: 54%; }
             .table2 col:nth-child(3) { width: 11%; }
@@ -167,27 +173,30 @@ function openResultsWindow(
             .table2 col:nth-child(5) { width: 11%; }
             .table2 col:nth-child(6) { width: 11%; }
 
-            /* Set height classes for each table to reflect row count */
-            .table1 { height: calc(20px * 27); } /* 27 rows */
-            .table2 { height: calc(20px * 12); } /* 12 rows */
-            .table3 { height: calc(20px * 33); } /* 33 rows */
-            .table4 { height: calc(20px * 6); }  /* 6 rows */
-            .table5 td, .table6 td { height: 10px; } /* Half row height for Table 5 and Table 6 */
+            
+            .table1 { height: calc(20px * 27); } /* 27 bahagi */
+            .table2 { height: calc(20px * 12); } /* 12 bahagi */
+            .table3 { height: calc(20px * 33); } /* 33 bahagi */
+            .table4 { height: calc(20px * 6); }  /* 6 bahagi */
+            .table5 td, .table6 td { height: 10px; } 
 
-            /* Column widths for Table 5 and Table 6’s 21 columns */
+            /* laggu sin hika lima iban hika-unom lamesahan */
+            
             .table5 td:nth-child(1), .table6 td:nth-child(1) { width: 3.20%; }
             .table5 td:nth-child(2), .table6 td:nth-child(2) { width: 33.38%; }
             .table5 td:nth-child(n+3):nth-child(-n+21), 
             .table6 td:nth-child(n+3):nth-child(-n+21)
 
-            /* Column widths for Table 7’s 5 columns */
+            /* laggu sin hikapitu lamesahan */
+            
             .table7 td:nth-child(1) { width: 3.20%; }
             .table7 td:nth-child(2) { width: 46.73%; }
             .table7 td:nth-child(3), 
             .table7 td:nth-child(4), 
             .table7 td:nth-child(5) { width: 16.69%; }
 
-            /* Column widths for Table 8’s 8 columns */
+            /* laggu sin hikawalu lamesahan */
+            
             .table8 td:nth-child(1) { width: 3.20%; }
             .table8 td:nth-child(2) { width: 21.7%; }
             .table8 td:nth-child(3) { width: 35%; }
@@ -195,11 +204,12 @@ function openResultsWindow(
             .table8 td:nth-child(5) { width: 15.73%; }
 
             .table9 td {
-                height: 20px; /* Matches row height of Table 1 */
-                font-size: 10px; /* Ensures consistent font size */
+                height: 20px; /* pagsibu sin haba ha panagnaan lamesahan */
+                font-size: 10px; /* pagsibu sin katan laggu sin batang */
             }
 
-            /* Column width for Table 9 */
+            /* laggu sin hikasiyam lamesahan */
+            
             .table9 col:nth-child(1) { width: 2%; }
             .table9 col:nth-child(2) { width: 54%; }
             .table9 col:nth-child(3) { width: 11%; }
@@ -212,9 +222,10 @@ function openResultsWindow(
         </style>
     </head>
     <body>
-        <!-- Row 1: Table 1 with merged cells and Table 4 directly below, followed by Table 8 -->
+        <!-- Pag-antup sin panagnaan, hika-upat iban hika-walu lamesahan -->
+        
         <div class="tables-container">
-            <!-- Column for Table 1, Table 4, and Table 8 -->
+            
             <div class="table-wrapper">
                 <table class="table1">
                 <colgroup>
@@ -244,7 +255,7 @@ function openResultsWindow(
                 </tbody>
             </table>
 
-                <!-- Modified Table 4 with horizontal merges and custom content -->
+                
                 <table class="table4">
                     <tbody>
                         <tr>
@@ -289,7 +300,7 @@ function openResultsWindow(
         <col style="width: 15.73%;">  <!-- Column 5 -->
     </colgroup>
     <tbody>
-        <!-- Row 1: Headers for Columns 3, 4, and 5 -->
+        
         <tr>
             <td></td>
             <td></td>
@@ -337,7 +348,7 @@ function openResultsWindow(
 </table>
 
 
-<!-- Table 9 starts here -->
+<!-- Hika-siyam lamesahan - dii tumagna -->
 <table class="table9">
                 <colgroup>
                     <col style="width: 4%;">
@@ -365,7 +376,7 @@ function openResultsWindow(
                 </tbody>
             </table>
 
-<!-- Table 10 Starts here -->
+<!-- Hika-hampu lamesahan - dii tumagna -->
 <table class="table10">
     <colgroup>
                     <col style="width: 4%;">
@@ -394,7 +405,7 @@ function openResultsWindow(
                     </tbody>
                 </table>
 
-<!-- Table 11-1 Starts here -->
+<!-- Hika-amputag-isa lamesahan - dii tumagna -->
 <table class="table11">
     <colgroup>
         <col style="width: 4%;">
@@ -425,7 +436,7 @@ function openResultsWindow(
 
             </div>
 
-            <!-- Column for Table 2, Table 5, Table 6, and Table 7 directly below each other -->
+<!-- Pag-antup sin hikaruwa, hikalima, hika-unom iban hika-pito lamesahan -->
             <div class="table-wrapper">
                 <table class="table2">
     <colgroup>
@@ -437,7 +448,7 @@ function openResultsWindow(
         <col style="width: 11%;">
     </colgroup>
     <tbody>
-        <!-- Header Rows -->
+        
         <tr>
             <td rowspan="2" colspan="2" class="bold">DOMAIN</td>
             <td colspan="2" class="bold" style="text-align: center;">BOSY ASSESSMENT</td>
@@ -450,7 +461,7 @@ function openResultsWindow(
             <td class="bold" style="text-align: center;">SCALED SCORE</td>
         </tr>
 
-        <!-- Data Rows -->
+        
         <tr>
             <td></td>
             <td class="bold">Gross Motor</td>
@@ -513,21 +524,15 @@ function openResultsWindow(
     </colgroup>
     <tbody>
         <tr>
-            <!-- Column 1 and 2 merged, red background, bold white text, center-aligned -->
+            
             <td rowspan="2" colspan="2" class="bold" style="background-color: red; color: white; text-align: center;">Scaled Scores</td>
-            
-            <!-- Columns 3 to 8 merged, light cream background, bold centered text -->
             <td colspan="6" class="bold" style="background-color: #fff3cc; text-align: center;">Suggests Delay in Development</td>
-            
-            <!-- Columns 9 to 15 merged, light yellow background, bold centered text -->
             <td colspan="7" class="bold" style="background-color: #ffe598; text-align: center;">Average Development</td>
-            
-            <!-- Columns 16 to 21 merged, yellow background, bold centered text -->
             <td colspan="6" class="bold" style="background-color: yellow; text-align: center;">Suggests Advanced Development</td>
         </tr>
         
         <tr>
-            <!-- Columns 3 to 8 with numbers 1 to 6, light cream background, bold centered text -->
+
             <td class="bold" style="background-color: #fff3cc; text-align: center;">1</td>
             <td class="bold" style="background-color: #fff3cc; text-align: center;">2</td>
             <td class="bold" style="background-color: #fff3cc; text-align: center;">3</td>
@@ -535,7 +540,7 @@ function openResultsWindow(
             <td class="bold" style="background-color: #fff3cc; text-align: center;">5</td>
             <td class="bold" style="background-color: #fff3cc; text-align: center;">6</td>
 
-            <!-- Columns 9 to 15 with numbers 7 to 13, light yellow background, bold centered text -->
+
             <td class="bold" style="background-color: #ffe598; text-align: center;">7</td>
             <td class="bold" style="background-color: #ffe598; text-align: center;">8</td>
             <td class="bold" style="background-color: #ffe598; text-align: center;">9</td>
@@ -544,7 +549,7 @@ function openResultsWindow(
             <td class="bold" style="background-color: #ffe598; text-align: center;">12</td>
             <td class="bold" style="background-color: #ffe598; text-align: center;">13</td>
 
-            <!-- Columns 16 to 21 with numbers 14 to 19, yellow background, bold centered text -->
+
             <td class="bold" style="background-color: yellow; text-align: center;">14</td>
             <td class="bold" style="background-color: yellow; text-align: center;">15</td>
             <td class="bold" style="background-color: yellow; text-align: center;">16</td>
@@ -553,7 +558,7 @@ function openResultsWindow(
             <td class="bold" style="background-color: yellow; text-align: center;">19</td>
         </tr>
 
-        <!-- Row 3 to Row 9 of Column 1 merged for "BoSY Assessment", rotated 90 degrees -->
+
         <tr>
             <td rowspan="7" class="bold" style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; vertical-align: middle;">BoSY Assessment</td>
             <td class="bold" style="text-align: left;">Gross Motor</td>
@@ -601,7 +606,7 @@ function openResultsWindow(
             <td id="fmBosycellIdNineteen" style="background-color: yellow;"></td>
 
         </tr>
-        <!-- Repeat similar structure for remaining rows -->
+        
         <tr><td class="bold" style="text-align: left;">Self-Help</td>
             <td id="shBosycellIdOne" style="background-color: #fff3cc;"></td>
             <td id="shBosycellIdTwo" style="background-color: #fff3cc;"></td>
@@ -713,7 +718,6 @@ function openResultsWindow(
 
         </tr>
 
-        <!-- Row 10 to Row 16 of Column 1 merged for "EoSY Assessment", rotated 90 degrees -->
         <tr>
             <td rowspan="7" class="bold" style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; vertical-align: middle;">EoSY Assessment</td>
              <td class="bold" style="text-align: left;">Gross Motor</td>
@@ -873,22 +877,16 @@ function openResultsWindow(
     <colgroup>
         <col style="width: 3.20%;">
         <col style="width: 33.38%;">
-        <col span="19" style="width: 3.34%;"> <!-- Fixed width for Columns 3 to 21 -->
+        <col span="19" style="width: 3.34%;"> 
     </colgroup>
     <tbody>
         <!-- Row 1 setup -->
         
             <tr>
-            <!-- Column 1 and 2 merged, red background, bold white text, center-aligned -->
+            
             <td rowspan="2" colspan="2" class="bold" style="background-color: red; color: white; text-align: center;">Standard Scores</td>
-            
-            <!-- Columns 3 to 8 merged, light cream background, bold centered text -->
             <td colspan="6" class="bold" style="background-color: #fff3cc; text-align: center;">Suggests Delay in Development</td>
-            
-            <!-- Columns 9 to 15 merged, light yellow background, bold centered text -->
             <td colspan="7" class="bold" style="background-color: #ffe598; text-align: center;">Average Development</td>
-            
-            <!-- Columns 16 to 21 merged, yellow background, bold centered text -->
             <td colspan="6" class="bold" style="background-color: yellow; text-align: center;">Suggests Advanced Development</td>
         </tr>
             
@@ -918,31 +916,31 @@ function openResultsWindow(
             <td style="background-color: yellow; color: yellow; font-size: 6px;">160</td>
         </tr>
 
-        <!-- Rows 2 to 3: BoSY Assessment -->
+
         <tr>
             <td rowspan="2" colspan="2" class="bold" style="text-align: center;">BoSY Assessment</td>
-            <!-- Columns 3 to 8 with light cream background -->
-    <td id="standardscorevalueBosycellIdOne" style="background-color: #fff3cc;"></td>
-    <td id="standardscorevalueBosycellIdTwo" style="background-color: #fff3cc;"></td>
-    <td id="standardscorevalueBosycellIdThree" style="background-color: #fff3cc;"></td>
-    <td id="standardscorevalueBosycellIdFour" style="background-color: #fff3cc;"></td>
-    <td id="standardscorevalueBosycellIdFive" style="background-color: #fff3cc;"></td>
-    <td id="standardscorevalueBosycellIdSix" style="background-color: #fff3cc;"></td>
-    <!-- Columns 9 to 15 with light yellow background -->
-    <td id="standardscorevalueBosycellIdSeven" style="background-color: #ffe598;"></td>
-    <td id="standardscorevalueBosycellIdEight" style="background-color: #ffe598;"></td>
-    <td id="standardscorevalueBosycellIdNine" style="background-color: #ffe598;"></td>
-    <td id="standardscorevalueBosycellIdTen" style="background-color: #ffe598;"></td>
-    <td id="standardscorevalueBosycellIdEleven" style="background-color: #ffe598;"></td>
-    <td id="standardscorevalueBosycellIdTwelve" style="background-color: #ffe598;"></td>
-    <td id="standardscorevalueBosycellIdThirteen" style="background-color: #ffe598;"></td>
-    <!-- Columns 16 to 21 with yellow background -->
-    <td id="standardscorevalueBosycellIdFourteen" style="background-color: yellow;"></td>
-    <td id="standardscorevalueBosycellIdFifteen" style="background-color: yellow;"></td>
-    <td id="standardscorevalueBosycellIdSixteen" style="background-color: yellow;"></td>
-    <td id="standardscorevalueBosycellIdSeventeen" style="background-color: yellow;"></td>
-    <td id="standardscorevalueBosycellIdEighteen" style="background-color: yellow;"></td>
-    <td id="standardscorevalueBosycellIdNineteen" style="background-color: yellow;"></td>
+
+            <td id="standardscorevalueBosycellIdOne" style="background-color: #fff3cc;"></td>
+            <td id="standardscorevalueBosycellIdTwo" style="background-color: #fff3cc;"></td>
+            <td id="standardscorevalueBosycellIdThree" style="background-color: #fff3cc;"></td>
+            <td id="standardscorevalueBosycellIdFour" style="background-color: #fff3cc;"></td>
+            <td id="standardscorevalueBosycellIdFive" style="background-color: #fff3cc;"></td>
+            <td id="standardscorevalueBosycellIdSix" style="background-color: #fff3cc;"></td>
+
+            <td id="standardscorevalueBosycellIdSeven" style="background-color: #ffe598;"></td>
+            <td id="standardscorevalueBosycellIdEight" style="background-color: #ffe598;"></td>
+            <td id="standardscorevalueBosycellIdNine" style="background-color: #ffe598;"></td>
+            <td id="standardscorevalueBosycellIdTen" style="background-color: #ffe598;"></td>
+            <td id="standardscorevalueBosycellIdEleven" style="background-color: #ffe598;"></td>
+            <td id="standardscorevalueBosycellIdTwelve" style="background-color: #ffe598;"></td>
+            <td id="standardscorevalueBosycellIdThirteen" style="background-color: #ffe598;"></td>
+
+            <td id="standardscorevalueBosycellIdFourteen" style="background-color: yellow;"></td>
+            <td id="standardscorevalueBosycellIdFifteen" style="background-color: yellow;"></td>
+            <td id="standardscorevalueBosycellIdSixteen" style="background-color: yellow;"></td>
+            <td id="standardscorevalueBosycellIdSeventeen" style="background-color: yellow;"></td>
+            <td id="standardscorevalueBosycellIdEighteen" style="background-color: yellow;"></td>
+            <td id="standardscorevalueBosycellIdNineteen" style="background-color: yellow;"></td>
         </tr>
         
         <tr style="height: 50px">
@@ -968,17 +966,16 @@ function openResultsWindow(
 
         </tr>
 
-        <!-- Rows 4 to 5: EoSY Assessment -->
         <tr>
             <td rowspan="2" colspan="2" class="bold" style="text-align: center;">EoSY Assessment</td>
-            <!-- Columns 3 to 8 with light cream background -->
+
             <td id="standardscorevalueEosycellIdOne" style="background-color: #fff3cc;"></td>
             <td id="standardscorevalueEosycellIdTwo" style="background-color: #fff3cc;"></td>
             <td id="standardscorevalueEosycellIdThree" style="background-color: #fff3cc;"></td>
             <td id="standardscorevalueEosycellIdFour" style="background-color: #fff3cc;"></td>
             <td id="standardscorevalueEosycellIdFive" style="background-color: #fff3cc;"></td>
             <td id="standardscorevalueEosycellIdSix" style="background-color: #fff3cc;"></td>
-            <!-- Columns 9 to 15 with light yellow background -->
+
             <td id="standardscorevalueEosycellIdSeven" style="background-color: #ffe598;"></td>
             <td id="standardscorevalueEosycellIdEight" style="background-color: #ffe598;"></td>
             <td id="standardscorevalueEosycellIdNine" style="background-color: #ffe598;"></td>
@@ -986,7 +983,7 @@ function openResultsWindow(
             <td id="standardscorevalueEosycellIdEleven" style="background-color: #ffe598;"></td>
             <td id="standardscorevalueEosycellIdTwelve" style="background-color: #ffe598;"></td>
             <td id="standardscorevalueEosycellIdThirteen" style="background-color: #ffe598;"></td>
-            <!-- Columns 16 to 21 with yellow background -->
+
             <td id="standardscorevalueEosycellIdFourteen" style="background-color: yellow;"></td>
             <td id="standardscorevalueEosycellIdFifteen" style="background-color: yellow;"></td>
             <td id="standardscorevalueEosycellIdSixteen" style="background-color: yellow;"></td>
@@ -1031,16 +1028,15 @@ function openResultsWindow(
         <col style="width: 16.69%;">
     </colgroup>
     <tbody>
-        <!-- Row 1: Headers for Columns 3, 4, and 5 -->
+        
         <tr>
-            <td></td> <!-- Empty cell for Column 1 -->
-            <td></td> <!-- Empty cell for Column 2 -->
+            <td></td> 
+            <td></td> 
             <td class="bold" style="text-align: center;">YEAR</td>
             <td class="bold" style="text-align: center;">MONTH</td>
             <td class="bold" style="text-align: center;">DAY</td>
         </tr>
         
-        <!-- Row 2 to 6: Column 2 Texts -->
         <tr>
             <td></td>
             <td class="bold" style="text-align: left;">Child's Date of Birth</td>
@@ -1074,62 +1070,60 @@ function openResultsWindow(
         </tr>
     </tbody>
 </table>
+                
+            <table class="table11-2" style="margin-top: 50px;">
+                <colgroup>
+                    <col style="width: 4%;">    <!-- Column 1 -->
+                    <col style="width: 52%;">   <!-- Column 2 -->
+                    <col style="width: 11%;">   <!-- Column 3 -->
+                    <col style="width: 11%;">   <!-- Column 4 -->
+                    <col style="width: 11%;">   <!-- Column 5 -->
+                    <col style="width: 11%;">   <!-- Column 6 -->
+                </colgroup>
+                <tbody>
+                    
+                    <tr>
+                        <td colspan="2"></td>
+                        <td style="text-align: center;">Observed</td>
+                        <td style="text-align: center;">Not Observed</td>
+                        <td style="text-align: center;">Observed</td>
+                        <td style="text-align: center;">Not Observed</td>
+                    </tr>
+            
+                    <tbody>${table11_2Content}</tbody>
+                    
+                </tbody>
+            </table>
+            
+            
+            <table class="table12">
+                <colgroup>
+                    <col style="width: 4%;">    <!-- Column 1 -->
+                    <col style="width: 52%;">   <!-- Column 2 -->
+                    <col style="width: 11%;">   <!-- Column 3 -->
+                    <col style="width: 11%;">   <!-- Column 4 -->
+                    <col style="width: 11%;">   <!-- Column 5 -->
+                    <col style="width: 11%;">   <!-- Column 6 -->
+                </colgroup>
+                <tbody>
+                    <!-- Header Rows: Merged cells with custom headers -->
+                    <tr>
+                        <td rowspan="2" colspan="2" style="text-align: center; font-weight: bold;">RECEPTIVE LANGUAGE DOMAIN</td>
+                        <td colspan="2" style="text-align: center; font-weight: bold;">BOSY ASSESSMENT</td>
+                        <td colspan="2" style="text-align: center; font-weight: bold;">EOSY ASSESSMENT</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">Observed</td>
+                        <td style="text-align: center;">Not Observed</td>
+                        <td style="text-align: center;">Observed</td>
+                        <td style="text-align: center;">Not Observed</td>
+                    </tr>
+                </thead>
+                <tbody>${table12Content}</tbody>
+            </table>                
+            </div>
 
             
-                <!-- Table 11-2 Starts here with additional spacing class -->
-<table class="table11-2" style="margin-top: 50px;">
-    <colgroup>
-        <col style="width: 4%;">    <!-- Column 1 -->
-        <col style="width: 52%;">   <!-- Column 2 -->
-        <col style="width: 11%;">   <!-- Column 3 -->
-        <col style="width: 11%;">   <!-- Column 4 -->
-        <col style="width: 11%;">   <!-- Column 5 -->
-        <col style="width: 11%;">   <!-- Column 6 -->
-    </colgroup>
-    <tbody>
-        <!-- Header Rows: Merged cells with custom headers -->
-        <tr>
-            <td colspan="2"></td>
-            <td style="text-align: center;">Observed</td>
-            <td style="text-align: center;">Not Observed</td>
-            <td style="text-align: center;">Observed</td>
-            <td style="text-align: center;">Not Observed</td>
-        </tr>
-
-        <tbody>${table11_2Content}</tbody>
-        
-    </tbody>
-</table>
-
-<!-- Table 12 Starts here -->
-<table class="table12">
-    <colgroup>
-        <col style="width: 4%;">    <!-- Column 1 -->
-        <col style="width: 52%;">   <!-- Column 2 -->
-        <col style="width: 11%;">   <!-- Column 3 -->
-        <col style="width: 11%;">   <!-- Column 4 -->
-        <col style="width: 11%;">   <!-- Column 5 -->
-        <col style="width: 11%;">   <!-- Column 6 -->
-    </colgroup>
-    <tbody>
-        <!-- Header Rows: Merged cells with custom headers -->
-        <tr>
-            <td rowspan="2" colspan="2" style="text-align: center; font-weight: bold;">RECEPTIVE LANGUAGE DOMAIN</td>
-            <td colspan="2" style="text-align: center; font-weight: bold;">BOSY ASSESSMENT</td>
-            <td colspan="2" style="text-align: center; font-weight: bold;">EOSY ASSESSMENT</td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">Observed</td>
-            <td style="text-align: center;">Not Observed</td>
-            <td style="text-align: center;">Observed</td>
-            <td style="text-align: center;">Not Observed</td>
-        </tr>
-    </thead>
-    <tbody>${table12Content}</tbody>
-</table>                
-</div>
-
-            <!-- Column for Table 3 -->
 <div class="table-wrapper">
     <table class="table3">
         <colgroup>
@@ -1142,88 +1136,55 @@ function openResultsWindow(
             <col style="width: 10.84%;">  <!-- Column 7 -->
         </colgroup>
         <tbody>
-            <!-- Row 1: Merged Columns 3-5 and Columns 1 and 2 with image -->
+            
             <tr>
-                <!-- Column 1-2: Merged Rows 1-3 with image filling the cell -->
+            
                 <td rowspan="3" colspan="2" style="text-align: center; height: 100px;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Seal_of_the_Department_of_Education_of_the_Philippines.png" 
-                         alt="DepEd Seal" style="width: 100%; height: 100%; object-fit: contain; display: block;">
-                </td>
-                
-                <!-- Merged Columns 3-5 with text "Republic of the Philippines" -->
-                <td colspan="3" style="text-align: center; font-weight: bold; font-size: 15px;">
-                    Republic of the Philippines
-                </td>
-                
-                <!-- Column 6-7: Merged Rows 1-3 with image filling the cell -->
+                         alt="DepEd Seal" style="width: 100%; height: 100%; object-fit: contain; display: block;"></td>
+                <td colspan="3" style="text-align: center; font-weight: bold; font-size: 15px;">Republic of the Philippines</td>
                 <td rowspan="3" colspan="2" style="text-align: center; height: 100px;">
                     <img src="https://www.deped.gov.ph/wp-content/uploads/2021/08/Logo-DepEd-1.png" 
-                         alt="DepEd Logo" style="width: 100%; height: 100%; object-fit: contain; display: block;">
-                </td>
+                         alt="DepEd Logo" style="width: 100%; height: 100%; object-fit: contain; display: block;"></td>
             </tr>
 
-            <!-- Row 2: Merged Columns 3-5 with text "Department of Education" -->
             <tr>
-                <td colspan="3" style="text-align: center; font-weight: bold; font-size: 17px;">
-                    Department of Education
-                </td>
+                <td colspan="3" style="text-align: center; font-weight: bold; font-size: 17px;">Department of Education</td>
             </tr>
 
-            <!-- Row 3: Empty row to maintain structure after merges -->
             <tr>
                 <td colspan="3"></td>
             </tr>
 
-            <!-- Row 4: Merge all columns and add "Region XI" -->
             <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 11px;">
-                    Region XI
-                </td>
+                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 11px;">Region XI</td>
+            </tr>
+            <tr>
+                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 13px;">Schools Division of Davao City</td>
             </tr>
 
-            <!-- Row 5: Merge all columns and add "Schools Division of Davao City" -->
             <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 13px;">
-                    Schools Division of Davao City
-                </td>
+                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 11px;">Sta. Ana District</td>
             </tr>
 
-            <!-- Row 6: Merge all columns and add "Sta. Ana District" -->
             <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 11px;">
-                    Sta. Ana District
-                </td>
+                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 18px;">Sta. Ana Central Elementary School</td>
             </tr>
 
-            <!-- Row 7: Merge all columns and add "Sta. Ana Central Elementary School" -->
             <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 18px;">
-                    Sta. Ana Central Elementary School
-                </td>
+                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 16px; font-family: 'Comic Sans MS', sans-serif;">Philippine Early Childhood</td>
             </tr>
 
-            <!-- Row 8: Merge all columns and add "Philippine Early Childhood" -->
             <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 16px; font-family: 'Comic Sans MS', sans-serif;">
-                    Philippine Early Childhood
-                </td>
+                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 16px; font-family: 'Comic Sans MS', sans-serif;">Development Checklist</td>
             </tr>
 
-            <!-- Row 9: Merge all columns and add "Development Checklist" -->
-            <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 16px; font-family: 'Comic Sans MS', sans-serif;">
-                    Development Checklist
-                </td>
-            </tr>
-
-            <!-- Row 10: Merge all columns and add "ECF 1" with regular font -->
             <tr>
                 <td colspan="7" style="text-align: center; font-size: 11px;">
                     ECF 1
                 </td>
             </tr>
 
-             <!-- Row 11-18: Merged all columns for image -->
             <tr>
                 <td colspan="7" style="text-align: center; height: 340px;">
                     <img src="https://i.imgur.com/jIiSJDK.png" 
@@ -1235,66 +1196,29 @@ function openResultsWindow(
                 <td colspan"7" style="text-align: center; height: 10px;"></td>
                 </tr>
             
-            <!-- Row 20: Child's Name and Age Generated Fields-->
             <tr>
-                <!-- Merged Columns 1-2 with text "Child's Name" -->
+                
                 <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left;">
                     &nbsp;&nbsp;&nbsp;Child's Name:
                 </td>
-                <!-- Merged Columns 3-5 with text "Full Name Here" -->
-                 <td colspan="3" style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">
-                                ${fullName} <!-- Replace "Full Name Here" with the actual name -->
-                            </td>
-                <!-- Column 6 with text "Age:" -->
-                <td style="font-size: 13px; font-weight: bold; text-align: right;">
-                    Age:
-                </td>
-                <!-- Column 7 with text "X" -->
-                <td style="font-size: 13px; font-weight: bold; text-align: center; text-decoration: underline;">
-                    ${yrsOld || "N/A"} <!-- Display the eighth column data or "N/A" if undefined -->
-                </td>
+                 <td colspan="3" style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">${fullName} </td>
+                <td style="font-size: 13px; font-weight: bold; text-align: right;">Age:</td>
+                <td style="font-size: 13px; font-weight: bold; text-align: center; text-decoration: underline;">${yrsOld || "N/A"}</td>
             </tr>
 
-            <!-- Row 21: Birthdate and Sex Generated Fields-->
             <tr>
-                <!-- Merged Columns 1-2 with text "Birthdate:" -->
-                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left;">
-                    &nbsp;&nbsp;&nbsp;Birthdate:
-                </td>
-                <!-- Column 3 with text "Birthday here" -->
-                <td style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">
-                    ${birthday || "N/A"}
-                </td>
-                <!-- Column 4 left blank as a spacer -->
+                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left;">&nbsp;&nbsp;&nbsp;Birthdate:</td>
+                <td style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">${birthday || "N/A"}</td>
                 <td></td>
-                <!-- Column 5 with text "Sex:" -->
-                <td style="font-size: 13px; font-weight: bold; text-align: right;">
-                    Sex:
-                </td>
-                <!-- Merged Columns 6-7 with text "Gender here" -->
-                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">
-                    ${gender || "N/A"}
-                </td>
+                <td style="font-size: 13px; font-weight: bold; text-align: right;">Sex:</td>
+                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">${gender || "N/A"}</td>
             </tr>
 
-            <!-- Row 22: LRN and School Year Generated Fields-->
             <tr>
-                <!-- Merged Columns 1-2 with text "LRN:" -->
-                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left;">
-                    &nbsp;&nbsp;&nbsp;LRN:
-                </td>
-                <!-- Column 3 with text "LRN Number here" -->
-                <td style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">
-                    ${lrnNumber || "N/A"}
-                </td>
-                <!-- Merged Columns 4-5 with text "School Year:" -->
-                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: right;">
-                    School Year:
-                </td>
-                <!-- Merged Columns 6-7 with text "SY Here" -->
-                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">
-                    ${syYear || "N/A"}
-                </td>
+                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left;">&nbsp;&nbsp;&nbsp;LRN:</td>
+                <td style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">${lrnNumber || "N/A"}</td>
+                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: right;">School Year:</td>
+                <td colspan="2" style="font-size: 13px; font-weight: bold; text-align: left; text-decoration: underline;">${syYear || "N/A"}</td>
             </tr>
             <tr>
                 <td colspan="7"></td>
@@ -1303,13 +1227,8 @@ function openResultsWindow(
                 <td colspan="7"></td>
             </tr>
             
-
-            <!-- Row 25: Merge Columns 1-2 with "Recorded with:" text -->
             <tr>
-                <td colspan="2" style="font-size: 13px; text-align: left; vertical-align: bottom;">
-                    Recorded with:
-                </td>
-                <!-- Remaining Columns 3-7 kept empty -->
+                <td colspan="2" style="font-size: 13px; text-align: left; vertical-align: bottom;">Recorded with:</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -1317,16 +1236,11 @@ function openResultsWindow(
                 <td></td>
             </tr>
 
-            <!-- Row 26-27: Empty rows as spacers -->
             <tr>
                 <td colspan="7"></td>
             </tr>
-
-            <!-- Row 28: Merge all columns with checkbox items -->
             <tr>
-                <td colspan="7" style="font-size: 13px; text-align: center;">
-                    ☑ Birth/Baptismal Certificate;&nbsp;&nbsp;&nbsp;☐ Parent(s) Affidavit&nbsp;&nbsp;&nbsp;&nbsp;☐ None
-                </td>
+                <td colspan="7" style="font-size: 13px; text-align: center;">☑ Birth/Baptismal Certificate;&nbsp;&nbsp;&nbsp;☐ Parent(s) Affidavit&nbsp;&nbsp;&nbsp;&nbsp;☐ None</td>
             </tr>
             <tr>
                 <td colspan="7"></td>
@@ -1335,14 +1249,10 @@ function openResultsWindow(
                 <td colspan="7"></td>
             </tr>
             <tr>
-                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">
-                    ${adviserName || "N/A"}
-                </td>
+                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">${adviserName || "N/A"}</td>
             </tr>
             <tr>
-                <td colspan="7" style="font-size: 11px; text-align: center; vertical-align: top;">
-                    Name of Adviser
-                </td>
+                <td colspan="7" style="font-size: 11px; text-align: center; vertical-align: top;">Name of Adviser</td>
             </tr>
             <tr>
                 <td colspan="7"></td>
@@ -1351,21 +1261,16 @@ function openResultsWindow(
                 <td colspan="7"></td>
             </tr>
             <tr>
-                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">
-                    ${principalName || "N/A"}
-                </td>
+                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">${principalName || "N/A"}</td>
             </tr>
             <tr>
-                <td colspan="7" style="font-size: 11px; text-align: center; vertical-align: top;">
-                    School Head
-                </td>
+                <td colspan="7" style="font-size: 11px; text-align: center; vertical-align: top;">School Head</td>
             </tr>
 
 
         </tbody>
     </table>
 
-    <!-- Table 13 Starts here with additional spacing class -->
 <table class="table13" style="margin-top: 5px;">
     <colgroup>
         <col style="width: 4%;">    <!-- Column 1 -->
@@ -1393,33 +1298,31 @@ function openResultsWindow(
                     </tbody>
                 </table>
 
-<!-- Table 14 Starts here -->
-<table class="table14">
-    <colgroup>
-        <col style="width: 4%;">    <!-- Column 1 -->
-        <col style="width: 52%;">   <!-- Column 2 -->
-        <col style="width: 11%;">   <!-- Column 3 -->
-        <col style="width: 11%;">   <!-- Column 4 -->
-        <col style="width: 11%;">   <!-- Column 5 -->
-        <col style="width: 11%;">   <!-- Column 6 -->
-    </colgroup>
-    <tbody>
-        <!-- Header Rows: Merged cells with custom headers -->
-        <tr>
-            <td rowspan="2" colspan="2" style="text-align: center; font-weight: bold;">COGNITIVE DOMAIN</td>
-            <td colspan="2" style="text-align: center; font-weight: bold;">BOSY ASSESSMENT</td>
-            <td colspan="2" style="text-align: center; font-weight: bold;">EOSY ASSESSMENT</td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">Observed</td>
-            <td style="text-align: center;">Not Observed</td>
-            <td style="text-align: center;">Observed</td>
-            <td style="text-align: center;">Not Observed</td>
-        </tr>
-        <tbody>${table14Content}</tbody>
-</table>
-    
-</div>
+            <table class="table14">
+                <colgroup>
+                    <col style="width: 4%;">    <!-- Column 1 -->
+                    <col style="width: 52%;">   <!-- Column 2 -->
+                    <col style="width: 11%;">   <!-- Column 3 -->
+                    <col style="width: 11%;">   <!-- Column 4 -->
+                    <col style="width: 11%;">   <!-- Column 5 -->
+                    <col style="width: 11%;">   <!-- Column 6 -->
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td rowspan="2" colspan="2" style="text-align: center; font-weight: bold;">COGNITIVE DOMAIN</td>
+                        <td colspan="2" style="text-align: center; font-weight: bold;">BOSY ASSESSMENT</td>
+                        <td colspan="2" style="text-align: center; font-weight: bold;">EOSY ASSESSMENT</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">Observed</td>
+                        <td style="text-align: center;">Not Observed</td>
+                        <td style="text-align: center;">Observed</td>
+                        <td style="text-align: center;">Not Observed</td>
+                    </tr>
+                    <tbody>${table14Content}</tbody>
+            </table>
+                
+            </div>
 
 
 
@@ -1430,7 +1333,7 @@ function openResultsWindow(
     </html>
     `;
 
-    // Helper function to generate rows for Table 1 with specific content
+    // Mga luun sin kahba lamesahan mari
     function generateTable1Rows(rowCount) {
         const column1Texts = Array.from({ length: 24 }, (_, i) => (i + 1).toString()).concat([""]); // Number 1-24, last row blank
 
@@ -1475,7 +1378,6 @@ function openResultsWindow(
         return rows;
     }
 
-    // Helper function to generate rows for Table 2 with specific content
     function generateTable2Rows() {
         const column2Texts = [
             "Gross Motor", "Fine Motor", "Self-Help", "Receptive Language",
@@ -1486,43 +1388,43 @@ function openResultsWindow(
         let rows = '';
         for (let i = 0; i < column2Texts.length; i++) {
             rows += '<tr>';
-            rows += `<td></td>`; // Column 1 left empty as instructed
-            rows += `<td class="bold">${column2Texts[i]}</td>`; // Column 2 with left-aligned text in bold
+            rows += `<td></td>`; 
+            rows += `<td class="bold">${column2Texts[i]}</td>`; 
             for (let j = 2; j < 6; j++) {
-                rows += `<td></td>`; // Other columns left blank
+                rows += `<td></td>`; 
             }
             rows += '</tr>';
         }
         return rows;
     }
 
-// Custom helper function for Table 3 with 7 columns
-function generateTable3Rows(rowCount, colCount = 7) {
-    let rows = '';
-    for (let i = 0; i < rowCount; i++) {
-        rows += '<tr>';
-        for (let j = 0; j < colCount; j++) {
-            rows += `<td></td>`;
+    function generateTable3Rows(rowCount, colCount = 7) {
+        let rows = '';
+        for (let i = 0; i < rowCount; i++) {
+            rows += '<tr>';
+            for (let j = 0; j < colCount; j++) {
+                rows += `<td></td>`;
+            }
+            rows += '</tr>';
         }
-        rows += '</tr>';
+        return rows;
     }
-    return rows;
-}
 
 
-// General helper function for all other tables
-function generateTableRows(rowCount, colCount = 6) {
-    let rows = '';
-    for (let i = 0; i < rowCount; i++) {
-        rows += '<tr>';
-        for (let j = 0; j < colCount; j++) {
-            rows += `<td></td>`;
+
+        function generateTableRows(rowCount, colCount = 6) {
+            let rows = '';
+            for (let i = 0; i < rowCount; i++) {
+                rows += '<tr>';
+                for (let j = 0; j < colCount; j++) {
+                    rows += `<td></td>`;
+                }
+                rows += '</tr>';
+            }
+            return rows;
         }
-        rows += '</tr>';
-    }
-    return rows;
-}
-    // Write the HTML content to the new window
+
+    // mga luun sin bahgu tandawan
     resultsWindow.document.write(htmlContent);
     resultsWindow.document.close();
     resultsWindow.document.getElementById("gmBosycellIdOne").textContent = gmBosySymbolOne; resultsWindow.document.getElementById("gmBosycellIdTwo").textContent = gmBosySymbolTwo; resultsWindow.document.getElementById("gmBosycellIdThree").textContent = gmBosySymbolThree;
