@@ -2,3 +2,5 @@
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Content-Security-Policy: default-src 'self'; script-src 'self' https://apis.google.com; connect-src https://sheets.googleapis.com
+  Access-Control-Allow-Origin: *
+  Cache-Control: no-cache
