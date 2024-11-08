@@ -586,19 +586,19 @@ function generateTableContent(scholasticData, helperData) {
 
 function generateTable9Content(scholasticData, helperData) {
     const table9Config = [
-        { description: "Climbs on a chair or other elevated piece of furniture like a bed without help.", column3: 2, column5: 111 },
-        { description: "Walks backward.", column3: 3, column5: 112 },
-        { description: "Runs without tripping or falling.", column3: 4, column5: 113 },
-        { description: "Walks downstairs, 2 feet on each step, with one held.", column3: 5, column5: 114 },
-        { description: "Walks upstairs holding handrail, 2 feet on each step.", column3: 6, column5: 115 },
-        { description: "Walks upstairs with alternate feet without holding the handrail.", column3: 7, column5: 116 },
-        { description: "Walks downstairs with alternate feet without holding the handrail.", column3: 8, column5: 117 },
-        { description: "Moves body parts as directed.", column3: 9, column5: 118 },
-        { description: "Jumps up.", column3: 10, column5: 119 },
-        { description: "Throws ball overhead with direction.", column3: 11, column5: 120 },
-        { description: "Hops 1-3 steps on preferred foot.", column3: 12, column5: 121 },
-        { description: "Jump and turn.", column3: 13, column5: 122 },
-        { description: "Dances patterns/join group movement activities.", column3: 14, column5: 123 }
+        { description: "Climbs on a chair or other elevated piece of furniture like a bed without help.", column3: 2, column5: 111, height: "40px" },
+        { description: "Walks backward.", column3: 3, column5: 112, height: "30px" },
+        { description: "Runs without tripping or falling.", column3: 4, column5: 113, height: "30px" },
+        { description: "Walks downstairs, 2 feet on each step, with one held.", column3: 5, column5: 114, height: "30px" },
+        { description: "Walks upstairs holding handrail, 2 feet on each step.", column3: 6, column5: 115, height: "30px" },
+        { description: "Walks upstairs with alternate feet without holding the handrail.", column3: 7, column5: 116, height: "40px" },
+        { description: "Walks downstairs with alternate feet without holding the handrail.", column3: 8, column5: 117, height: "40px" },
+        { description: "Moves body parts as directed.", column3: 9, column5: 118, height: "30px" },
+        { description: "Jumps up.", column3: 10, column5: 119, height: "30px" },
+        { description: "Throws ball overhead with direction.", column3: 11, column5: 120, height: "30px" },
+        { description: "Hops 1-3 steps on preferred foot.", column3: 12, column5: 121, height: "30px" },
+        { description: "Jump and turn.", column3: 13, column5: 122, height: "30px" },
+        { description: "Dances patterns/join group movement activities.", column3: 14, column5: 123, height: "30px" },
     ];
 
     let column3CheckmarkCount = 0;
@@ -606,24 +606,30 @@ function generateTable9Content(scholasticData, helperData) {
     let column5CheckmarkCount = 0;
     let column6CheckmarkCount = 0;
 
-        const rowsHtml = table9Config.map((rowConfig, index) => {
+    const rowsHtml = table9Config.map((rowConfig, index) => {
         const resultColumn3 = (scholasticData[rowConfig.column3] || helperData[rowConfig.column3]) || "";
         const resultColumn4 = resultColumn3;
         const resultColumn5 = (scholasticData[rowConfig.column5] || helperData[rowConfig.column5]) || "";
         const resultColumn6 = resultColumn5;
 
-        
+        // Column 3: Checkmark if TRUE, otherwise blank
         const column3Content = resultColumn3 === "TRUE" ? "✔️" : "";
         if (column3Content === "✔️") column3CheckmarkCount++;
+
+        // Column 4: Opposite of Column 3
         const column4Content = resultColumn4 === "TRUE" ? "" : "✔️";
         if (column4Content === "✔️") column4CheckmarkCount++;
+
+        // Column 5: Checkmark if TRUE, otherwise blank
         const column5Content = resultColumn5 === "TRUE" ? "✔️" : "";
         if (column5Content === "✔️") column5CheckmarkCount++;
+
+        // Column 6: Opposite of Column 5
         const column6Content = resultColumn6 === "TRUE" ? "" : "✔️";
         if (column6Content === "✔️") column6CheckmarkCount++;
 
         return `
-            <tr>
+            <tr style="height: ${rowConfig.height};">
                 <td>${index + 1}</td>
                 <td style="text-align: left;">${rowConfig.description}</td>
                 <td>${column3Content}</td>
@@ -634,8 +640,9 @@ function generateTable9Content(scholasticData, helperData) {
         `;
     }).join('');
 
+    // Add final row with checkmark totals for each column
     const totalsRow = `
-        <tr>
+        <tr style="height: 40px;">
             <td></td>
             <td style="text-align: left; font-weight: bold;">TOTAL SCORE</td>
             <td>${column3CheckmarkCount}</td>
@@ -644,46 +651,55 @@ function generateTable9Content(scholasticData, helperData) {
             <td>${column6CheckmarkCount}</td>
         </tr>
     `;
+
     return rowsHtml + totalsRow;
 }
 
+// Function to generate Table 10 content
 function generateTable10Content(scholasticData, helperData) {
     const table10Config = [
-        { description: "Uses 5 fingers to get food/toys placed on a flat surface.", column3: 15, column5: 124 },
-        { description: "Picks up objects with thumb and index finger.", column3: 16, column5: 125 },
-        { description: "Displays a definite hand preference.", column3: 17, column5: 126 },
-        { description: "Puts small objects in/out of containers.", column3: 18, column5: 127 },
-        { description: "Holds a crayon with all the fingers of his hand, making a fist (i.e., palmar grasp).", column3: 19, column5: 128 },
-        { description: "Unscrews lid of container or unwraps food.", column3: 20, column5: 129 },
-        { description: "Scribbles spontaneously.", column3: 21, column5: 130 },
-        { description: "Scribbles vertical and horizontal.", column3: 22, column5: 131 },
-        { description: "Draws circle purposely.", column3: 23, column5: 132 },
-        { description: "Draws a human figure (head, eyes, trunk, arms, hand/fingers).", column3: 24, column5: 133 },
-        { description: "Draws a house using geometric forms.", column3: 25, column5: 134 }
+        { description: "Uses 5 fingers to get food/toys placed on a flat surface.", column3: 15, column5: 124, height: "30px" },
+        { description: "Picks up objects with thumb and index finger.", column3: 16, column5: 125, height: "30px" },
+        { description: "Displays a definite hand preference.", column3: 17, column5: 126, height: "30px" },
+        { description: "Puts small objects in/out of containers.", column3: 18, column5: 127, height: "30px" },
+        { description: "Holds a crayon with all the fingers of his hand, making a fist (i.e., palmar grasp).", column3: 19, column5: 128, height: "50px" },
+        { description: "Unscrews lid of container or unwraps food.", column3: 20, column5: 129, height: "30px" },
+        { description: "Scribbles spontaneously.", column3: 21, column5: 130, height: "30px" },
+        { description: "Scribbles vertical and horizontal.", column3: 22, column5: 131, height: "30px" },
+        { description: "Draws circle purposely.", column3: 23, column5: 132, height: "30px" },
+        { description: "Draws a human figure (head, eyes, trunk, arms, hand/fingers).", column3: 24, column5: 133, height: "50px" },
+        { description: "Draws a house using geometric forms.", column3: 25, column5: 134, height: "30px" }
     ];
 
+    // Initialize counters for checkmarks
     let column3CheckmarkCount = 0;
     let column4CheckmarkCount = 0;
     let column5CheckmarkCount = 0;
     let column6CheckmarkCount = 0;
 
-        const rowsHtml = table10Config.map((rowConfig, index) => {
+    // Generate rows with checkmark logic
+    const rowsHtml = table10Config.map((rowConfig, index) => {
         const resultColumn3 = scholasticData[rowConfig.column3] || helperData[rowConfig.column3] || "";
         const resultColumn4 = resultColumn3;
         const resultColumn5 = scholasticData[rowConfig.column5] || helperData[rowConfig.column5] || "";
         const resultColumn6 = resultColumn5;
 
+        // Apply checkmark logic for each column
         const column3Content = resultColumn3 === "TRUE" ? "✔️" : "";
         if (column3Content === "✔️") column3CheckmarkCount++;
+
         const column4Content = resultColumn4 === "TRUE" ? "" : "✔️";
         if (column4Content === "✔️") column4CheckmarkCount++;
+
         const column5Content = resultColumn5 === "TRUE" ? "✔️" : "";
         if (column5Content === "✔️") column5CheckmarkCount++;
+
         const column6Content = resultColumn6 === "TRUE" ? "" : "✔️";
         if (column6Content === "✔️") column6CheckmarkCount++;
 
+        // Generate the row HTML
         return `
-            <tr>
+            <tr style="height: ${rowConfig.height};">
                 <td>${index + 1}</td>
                 <td style="text-align: left;">${rowConfig.description}</td>
                 <td>${column3Content}</td>
@@ -694,8 +710,9 @@ function generateTable10Content(scholasticData, helperData) {
         `;
     }).join('');
 
+    // Add totals row at the end
     const totalsRow = `
-        <tr>
+        <tr style="height: 40px;">
             <td></td>
             <td style="text-align: left; font-weight: bold;">TOTAL SCORE</td>
             <td>${column3CheckmarkCount}</td>
@@ -707,11 +724,11 @@ function generateTable10Content(scholasticData, helperData) {
 
     return rowsHtml + totalsRow;
 }
-
+// Function to generate content for Table 11-1
 function generateTable11_1Content(scholasticData, helperData) {
     const table11_1Config = [
-        { description: "Feeds self with finger food(e.g., biscuits, bread) using fingers.", column3: 26, column5: 135 },
-        { description: "Feeds self using spoon with spillage.", column3: 27, column5: 136 }
+        { description: "Feeds self with finger food(e.g., biscuits, bread) using fingers.", column3: 26, column5: 135, height: "60px" },
+        { description: "Feeds self using spoon with spillage.", column3: 27, column5: 136, height: "60px" },
         // Add more rows here if needed
     ];
 
@@ -740,7 +757,7 @@ function generateTable11_1Content(scholasticData, helperData) {
         if (column6Content === "✔️") totalColumn6Checkmarks++;
 
         return `
-            <tr style="height: 40px;">
+            <tr style="height: ${rowConfig.height};">
                 <td>${index + 1}</td>
                 <td style="text-align: left;">${rowConfig.description}</td>
                 <td>${column3Content}</td>
@@ -762,41 +779,43 @@ function generateTable11_1Content(scholasticData, helperData) {
     };
 }
 
+// Function to generate content for Table 11-2
 function generateTable11_2Content(scholasticData, helperData, table11_1Checkmarks) {
     const table11_2Config = [
-        { description: "Feeds self using spoon without spillage.", column3: 28, column5: 137 },
-        { description: "Feeds self using fingers with spillage.", column3: 29, column5: 138 },
-        { description: "Feeds self using fingers without spillage.", column3: 30, column5: 139 },
-        { description: "Eats without need for spoonfeeding during any meal.", column3: 31, column5: 140 },
-        { description: "Helps hold cup for drinking.", column3: 32, column5: 141 },
-        { description: "Drinks from cup with spillage.", column3: 33, column5: 142 },
-        { description: "Drinks from cup unassisted.", column3: 34, column5: 143 },
-        { description: "Gets drink for self unassisted.", column3: 35, column5: 144 },
-        { description: "Pours from pitcher without spillage.", column3: 36, column5: 145 },
-        { description: "Prepares own food/snack.", column3: 37, column5: 146 },
-        { description: "Prepares meals for younger siblings/family members when no adults is around.", column3: 38, column5: 147 },
-        { description: "Participates when being dressed(e.g., raises arms or lifts leg).", column3: 39, column5: 148 },
-        { description: "Pulls down gartered short pants.", column3: 40, column5: 149 },
-        { description: "Removes sando.", column3: 41, column5: 150 },
-        { description: "Dresses without assistance including buttons and tying.", column3: 42, column5: 151 },
-        { description: "Dresses without assistance except for buttons and tying.", column3: 43, column5: 152 },
-        { description: "Informs the adult only after he has already urinated (peed) or moved his bowels (poohed) in his underpants.", column3: 44, column5: 153 },
-        { description: "Informs adult of need to urinate (pee) or move bowels (pooh-pooh) so he can be brought to designated place (e.g., comfort room).", column3: 45, column5: 154 },
-        { description: "Goes to the designated place to urinate (pee) or move bowels (pooh) and still does this in his underpants/wear anymore.", column3: 46, column5: 155 },
-        { description: "Goes to the designated place to urinate (pee) or move bowels (pooh) and never does this in his underpants/wear anymore.", column3: 47, column5: 156 },
-        { description: "Wipes/cleans self after a bowel movement.", column3: 48, column5: 157 },
-        { description: "Participates when bathing (e.g., Rubbing with soap).", column3: 49, column5: 158 },
-        { description: "Washes and dries hands without any help.", column3: 50, column5: 159 },
-        { description: "Washes face without any help.", column3: 51, column5: 160 },
-        { description: "Bathes without any help.", column3: 52, column5: 161 }
+        { description: "Feeds self using spoon without spillage.", column3: 28, column5: 137, height: "30px" },
+        { description: "Feeds self using fingers with spillage.", column3: 29, column5: 138, height: "30px" },
+        { description: "Feeds self using fingers without spillage.", column3: 30, column5: 139, height: "30px" },
+        { description: "Eats without need for spoonfeeding during any meal.", column3: 31, column5: 140, height: "30px" },
+        { description: "Helps hold cup for drinking.", column3: 32, column5: 141, height: "30px" },
+        { description: "Drinks from cup with spillage.", column3: 33, column5: 142, height: "30px" },
+        { description: "Drinks from cup unassisted.", column3: 34, column5: 143, height: "30px" },
+        { description: "Gets drink for self unassisted.", column3: 35, column5: 144, height: "30px" },
+        { description: "Pours from pitcher without spillage.", column3: 36, column5: 145, height: "30px" },
+        { description: "Prepares own food/snack.", column3: 37, column5: 146, height: "30px" },
+        { description: "Prepares meals for younger siblings/family members when no adults is around.", column3: 38, column5: 147, height: "49px" },
+        { description: "Participates when being dressed(e.g., raises arms or lifts leg).", column3: 39, column5: 148, height: "30px" },
+        { description: "Pulls down gartered short pants.", column3: 40, column5: 149, height: "30px" },
+        { description: "Removes sando.", column3: 41, column5: 150, height: "30px" },
+        { description: "Dresses without assistance including buttons and tying.", column3: 42, column5: 151, height: "30px" },
+        { description: "Dresses without assistance except for buttons and tying.", column3: 43, column5: 152, height: "30px" },
+        { description: "Informs the adult only after he has already urinated (peed) or moved his bowels (poohed) in his underpants.", column3: 44, column5: 153, height: "49px" },
+        { description: "Informs adult of need to urinate (pee) or move bowels (pooh-pooh) so he can be brought to designated place (e.g., comfort room).", column3: 45, column5: 154, height: "49px" },
+        { description: "Goes to the designated place to urinate (pee) or move bowels (pooh) and still does this in his underpants/wear anymore.", column3: 46, column5: 155, height: "49px" },
+        { description: "Goes to the designated place to urinate (pee) or move bowels (pooh) and never does this in his underpants/wear anymore.", column3: 47, column5: 156, height: "49px" },
+        { description: "Wipes/cleans self after a bowel movement.", column3: 48, column5: 157, height: "30px" },
+        { description: "Participates when bathing (e.g., Rubbing with soap).", column3: 49, column5: 158, height: "30px" },
+        { description: "Washes and dries hands without any help.", column3: 50, column5: 159, height: "30px" },
+        { description: "Washes face without any help.", column3: 51, column5: 160, height: "30px" },
+        { description: "Bathes without any help.", column3: 52, column5: 161, height: "30px" },
     ];
 
+    // Initialize counters with checkmarks from Table 11-1
     let totalColumn3Checkmarks = table11_1Checkmarks.column3;
     let totalColumn4Checkmarks = table11_1Checkmarks.column4;
     let totalColumn5Checkmarks = table11_1Checkmarks.column5;
     let totalColumn6Checkmarks = table11_1Checkmarks.column6;
 
-        const rowsHtml = table11_2Config.map((rowConfig, index) => {
+    const rowsHtml = table11_2Config.map((rowConfig, index) => {
         const resultColumn3 = scholasticData[rowConfig.column3] || helperData[rowConfig.column3] || "";
         const resultColumn4 = resultColumn3;
         const resultColumn5 = scholasticData[rowConfig.column5] || helperData[rowConfig.column5] || "";
@@ -815,7 +834,7 @@ function generateTable11_2Content(scholasticData, helperData, table11_1Checkmark
         if (column6Content === "✔️") totalColumn6Checkmarks++;
 
         return `
-            <tr>
+            <tr style="height: ${rowConfig.height};">
                 <td>${index + 3}</td>
                 <td style="text-align: left;">${rowConfig.description}</td>
                 <td>${column3Content}</td>
@@ -826,6 +845,7 @@ function generateTable11_2Content(scholasticData, helperData, table11_1Checkmark
         `;
     }).join('');
 
+    // Add final TOTAL SCORE row with combined checkmarks from Table 11-1 and Table 11-2
     const totalsRow = `
         <tr style="height: 40px;">
             <td></td>
@@ -840,37 +860,48 @@ function generateTable11_2Content(scholasticData, helperData, table11_1Checkmark
     return rowsHtml + totalsRow;
 }
 
+// Function to generate Table 12 content
 function generateTable12Content(scholasticData, helperData) {
     const table12Config = [
-        { description: "Points to family members when asked to do so.", column3: 54, column5: 162 },
-        { description: "Points to 5 body parts on himself when asked to do so.", column3: 55, column5: 163 },
-        { description: "Points to 5 named pictured objects when asked to do so.", column3: 56, column5: 164 },
-        { description: "Follows one-step instructions that include simple prepositions (e.g., in, on, under, etc.).", column3: 57, column5: 165 },
-        { description: "Follows 2-step instructions that include simple preposition.", column3: 58, column5: 166 }
+        { description: "Points to family members when asked to do so.", column3: 54, column5: 162, height: "30px" },
+        { description: "Points to 5 body parts on himself when asked to do so.", column3: 55, column5: 163, height: "30px" },
+        { description: "Points to 5 named pictured objects when asked to do so.", column3: 56, column5: 164, height: "30px" },
+        { description: "Follows one-step instructions that include simple prepositions (e.g., in, on, under, etc.).", column3: 57, column5: 165, height: "50px" },
+        { description: "Follows 2-step instructions that include simple preposition.", column3: 58, column5: 166, height: "30px" },
     ];
 
+    // Initialize counters for each column
     let column3CheckmarkCount = 0;
     let column4CheckmarkCount = 0;
     let column5CheckmarkCount = 0;
     let column6CheckmarkCount = 0;
 
-        const rowsHtml = table12Config.map((rowConfig, index) => {
+    // Generate rows with checkmarks and count them
+    const rowsHtml = table12Config.map((rowConfig, index) => {
         const resultColumn3 = scholasticData[rowConfig.column3] || helperData[rowConfig.column3] || "";
         const resultColumn4 = resultColumn3;
         const resultColumn5 = scholasticData[rowConfig.column5] || helperData[rowConfig.column5] || "";
         const resultColumn6 = resultColumn5;
 
+        // Column 3: Checkmark if TRUE, otherwise blank
         const column3Content = resultColumn3 === "TRUE" ? "✔️" : "";
         if (column3Content === "✔️") column3CheckmarkCount++;
+
+        // Column 4: Opposite of Column 3
         const column4Content = resultColumn4 === "TRUE" ? "" : "✔️";
         if (column4Content === "✔️") column4CheckmarkCount++;
+
+        // Column 5: Checkmark if TRUE, otherwise blank
         const column5Content = resultColumn5 === "TRUE" ? "✔️" : "";
         if (column5Content === "✔️") column5CheckmarkCount++;
+
+        // Column 6: Opposite of Column 5
         const column6Content = resultColumn6 === "TRUE" ? "" : "✔️";
         if (column6Content === "✔️") column6CheckmarkCount++;
 
+        // Generate the row HTML
         return `
-            <tr>
+            <tr style="height: ${rowConfig.height};">
                 <td>${index + 1}</td>
                 <td style="text-align: left;">${rowConfig.description}</td>
                 <td>${column3Content}</td>
@@ -881,8 +912,9 @@ function generateTable12Content(scholasticData, helperData) {
         `;
     }).join('');
 
+    // Add totals row at the end
     const totalsRow = `
-        <tr>
+        <tr style="height: 38px;">
             <td></td>
             <td style="text-align: left; font-weight: bold;">TOTAL SCORE</td>
             <td>${column3CheckmarkCount}</td>
@@ -894,43 +926,51 @@ function generateTable12Content(scholasticData, helperData) {
 
     return rowsHtml + totalsRow;
 }
-
+// Function to generate Table 13 content
 function generateTable13Content(scholasticData, helperData) {
     const table13Config = [
-        { description: "Uses 5-20 recognizable words", column3: 58, column5: 167 },
-        { description: "Uses pronouns (e.g., I, me, ako, akin)", column3: 59, column5: 168 },
-        { description: "Uses 2-3 words verb-noun combinations (e.g., hingi gatas)", column3: 60, column5: 169 },
-        { description: "Names objects in pictures", column3: 61, column5: 170 },
-        { description: "Speaks in grammatically correct 2-3 word sentences", column3: 62, column5: 171 },
-        { description: "Asks “what” questions", column3: 63, column5: 172 },
-        { description: "Asks “who” questions", column3: 64, column5: 173 },
-        { description: "Gives account of recent experiences (with prompting) in order of occurrence using past tense", column3: 65, column5: 174 }
+        { description: "Uses 5-20 recognizable words", column3: 58, column5: 167, height: "30px" },
+        { description: "Uses pronouns (e.g., I, me, ako, akin)", column3: 59, column5: 168, height: "30px" },
+        { description: "Uses 2-3 words verb-noun combinations (e.g., hingi gatas)", column3: 60, column5: 169, height: "30px" },
+        { description: "Names objects in pictures", column3: 61, column5: 170, height: "30px" },
+        { description: "Speaks in grammatically correct 2-3 word sentences", column3: 62, column5: 171, height: "30px" },
+        { description: "Asks “what” questions", column3: 63, column5: 172, height: "30px" },
+        { description: "Asks “who” questions", column3: 64, column5: 173, height: "30px" },
+        { description: "Gives account of recent experiences (with prompting) in order of occurrence using past tense", column3: 65, column5: 174, height: "50px" },
     ];
 
-    
+    // Initialize counters for each column
     let column3CheckmarkCount = 0;
     let column4CheckmarkCount = 0;
     let column5CheckmarkCount = 0;
     let column6CheckmarkCount = 0;
 
-        const rowsHtml = table13Config.map((rowConfig, index) => {
+    // Generate rows with checkmarks and count them
+    const rowsHtml = table13Config.map((rowConfig, index) => {
         const resultColumn3 = scholasticData[rowConfig.column3] || helperData[rowConfig.column3] || "";
         const resultColumn4 = resultColumn3;
         const resultColumn5 = scholasticData[rowConfig.column5] || helperData[rowConfig.column5] || "";
         const resultColumn6 = resultColumn5;
 
-        
+        // Column 3: Checkmark if TRUE, otherwise blank
         const column3Content = resultColumn3 === "TRUE" ? "✔️" : "";
         if (column3Content === "✔️") column3CheckmarkCount++;
+
+        // Column 4: Opposite of Column 3
         const column4Content = resultColumn4 === "TRUE" ? "" : "✔️";
         if (column4Content === "✔️") column4CheckmarkCount++;
+
+        // Column 5: Checkmark if TRUE, otherwise blank
         const column5Content = resultColumn5 === "TRUE" ? "✔️" : "";
         if (column5Content === "✔️") column5CheckmarkCount++;
+
+        // Column 6: Opposite of Column 5
         const column6Content = resultColumn6 === "TRUE" ? "" : "✔️";
         if (column6Content === "✔️") column6CheckmarkCount++;
 
+        // Generate row HTML with checkmark logic
         return `
-            <tr>
+            <tr style="height: ${rowConfig.height};">
                 <td>${index + 1}</td>
                 <td style="text-align: left;">${rowConfig.description}</td>
                 <td>${column3Content}</td>
@@ -941,8 +981,9 @@ function generateTable13Content(scholasticData, helperData) {
         `;
     }).join('');
 
+    // Add final row with checkmark totals for each column
     const totalsRow = `
-        <tr>
+        <tr style="height: 40px;">
             <td></td>
             <td style="text-align: left; font-weight: bold;">TOTAL SCORE</td>
             <td>${column3CheckmarkCount}</td>
@@ -954,55 +995,64 @@ function generateTable13Content(scholasticData, helperData) {
 
     return rowsHtml + totalsRow;
 }
-
+// Function to generate Table 14 content
 function generateTable14Content(scholasticData, helperData) {
     const table14Config = [
-        { description: "Looks in the direction of fallen object.", column3: 66, column5: 175 },
-        { description: "Looks for partially hidden object.", column3: 67, column5: 176 },
-        { description: "Imitates behavior just seen a few minutes earlier.", column3: 68, column5: 177 },
-        { description: "Offers object but will not release it.", column3: 69, column5: 178 },
-        { description: "Looks for completely hidden object.", column3: 70, column5: 179 },
-        { description: "Exhibits simple pretend play (e.g., feed, put doll to sleep).", column3: 71, column5: 180 },
-        { description: "Matches objects.", column3: 72, column5: 181 },
-        { description: "Matches 2-3 colors.", column3: 73, column5: 182 },
-        { description: "Matches pictures.", column3: 74, column5: 183 },
-        { description: "Sorts based on shapes.", column3: 75, column5: 184 },
-        { description: "Sorts objects based on 2 attributes (e.g., size and color).", column3: 76, column5: 185 },
-        { description: "Arranges objects according to size from smallest to biggest.", column3: 77, column5: 186 },
-        { description: "Names 4-6 colors.", column3: 78, column5: 187 },
-        { description: "Copies shapes.", column3: 79, column5: 188 },
-        { description: "Names 3 animals or vegetables when asked.", column3: 80, column5: 189 },
-        { description: "States what common household items are used for.", column3: 81, column5: 190 },
-        { description: "Can assemble simple puzzles.", column3: 82, column5: 191 },
-        { description: "Demonstrates understanding of opposites (e.g., big and small).", column3: 83, column5: 192 },
-        { description: "Points to left and right side of the body.", column3: 84, column5: 193 },
-        { description: "Can state what is silly or wrong with pictures.", column3: 85, column5: 194 },
-        { description: "Matches upper and lower case letters.", column3: 86, column5: 195 }
+        { description: "Looks in the direction of fallen object.", column3: 66, column5: 175, height: "35px" },
+        { description: "Looks for partially hidden object.", column3: 67, column5: 176, height: "35px" },
+        { description: "Imitates behavior just seen a few minutes earlier.", column3: 68, column5: 177, height: "35px" },
+        { description: "Offers object but will not release it.", column3: 69, column5: 178, height: "35px" },
+        { description: "Looks for completely hidden object.", column3: 70, column5: 179, height: "35px" },
+        { description: "Exhibits simple pretend play (e.g., feed, put doll to sleep).", column3: 71, column5: 180, height: "35px" },
+        { description: "Matches objects.", column3: 72, column5: 181, height: "35px" },
+        { description: "Matches 2-3 colors.", column3: 73, column5: 182, height: "35px" },
+        { description: "Matches pictures.", column3: 74, column5: 183, height: "35px" },
+        { description: "Sorts based on shapes.", column3: 75, column5: 184, height: "35px" },
+        { description: "Sorts objects based on 2 attributes (e.g., size and color).", column3: 76, column5: 185, height: "35px" },
+        { description: "Arranges objects according to size from smallest to biggest.", column3: 77, column5: 186, height: "35px" },
+        { description: "Names 4-6 colors.", column3: 78, column5: 187, height: "35px" },
+        { description: "Copies shapes.", column3: 79, column5: 188, height: "35px" },
+        { description: "Names 3 animals or vegetables when asked.", column3: 80, column5: 189, height: "35px" },
+        { description: "States what common household items are used for.", column3: 81, column5: 190, height: "35px" },
+        { description: "Can assemble simple puzzles.", column3: 82, column5: 191, height: "35px" },
+        { description: "Demonstrates understanding of opposites (e.g., big and small).", column3: 83, column5: 192, height: "40px" },
+        { description: "Points to left and right side of the body.", column3: 84, column5: 193, height: "35px" },
+        { description: "Can state what is silly or wrong with pictures.", column3: 85, column5: 194, height: "35px" },
+        { description: "Matches upper and lower case letters.", column3: 86, column5: 195, height: "35px" },
     ];
 
+    // Initialize counters for each column
     let column3CheckmarkCount = 0;
     let column4CheckmarkCount = 0;
     let column5CheckmarkCount = 0;
     let column6CheckmarkCount = 0;
 
-        const rowsHtml = table14Config.map((rowConfig, index) => {
+    // Generate rows with checkmarks and count them
+    const rowsHtml = table14Config.map((rowConfig, index) => {
         const resultColumn3 = scholasticData[rowConfig.column3] || helperData[rowConfig.column3] || "";
         const resultColumn4 = resultColumn3;
         const resultColumn5 = scholasticData[rowConfig.column5] || helperData[rowConfig.column5] || "";
         const resultColumn6 = resultColumn5;
 
-        
+        // Column 3: Checkmark if TRUE, otherwise blank
         const column3Content = resultColumn3 === "TRUE" ? "✔️" : "";
         if (column3Content === "✔️") column3CheckmarkCount++;
+
+        // Column 4: Opposite of Column 3
         const column4Content = resultColumn4 === "TRUE" ? "" : "✔️";
         if (column4Content === "✔️") column4CheckmarkCount++;
+
+        // Column 5: Checkmark if TRUE, otherwise blank
         const column5Content = resultColumn5 === "TRUE" ? "✔️" : "";
         if (column5Content === "✔️") column5CheckmarkCount++;
+
+        // Column 6: Opposite of Column 5
         const column6Content = resultColumn6 === "TRUE" ? "" : "✔️";
         if (column6Content === "✔️") column6CheckmarkCount++;
 
+        // Generate row HTML with checkmark logic
         return `
-            <tr>
+            <tr style="height: ${rowConfig.height};">
                 <td>${index + 1}</td>
                 <td style="text-align: left;">${rowConfig.description}</td>
                 <td>${column3Content}</td>
@@ -1013,8 +1063,9 @@ function generateTable14Content(scholasticData, helperData) {
         `;
     }).join('');
 
+    // Add final row with checkmark totals for each column
     const totalsRow = `
-        <tr>
+        <tr style="height: 40px;">
             <td></td>
             <td style="text-align: left; font-weight: bold;">TOTAL SCORE</td>
             <td>${column3CheckmarkCount}</td>
@@ -1063,4 +1114,6 @@ function calculateAge(birthYear, birthMonth, birthDay, endYear, endMonth, endDay
             return "N/A";
     }
 }
+
+
 
