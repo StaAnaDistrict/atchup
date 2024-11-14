@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg" href="functions/SACES Database Logo.svg"
-    <title>User Profile Dashboard</title>
     <link rel="stylesheet" href="profile.css">  
 </head>
 <body>
@@ -52,8 +51,8 @@
         const userStatus = localStorage.getItem('userStatus');
         const nameElement = document.querySelector('.name');
         const emailElement = document.querySelector('.email');
+        const profilePicElement = document.querySelector('.profile-section img');
         const userInfoElement = document.querySelector('.profile-section');
-        const profilePicElement = document.querySelector('.profile-section img');  // Select the profile picture <img> element
 
         if (loggedInUser && userStatus === 'APPROVED') {
             // Set email address in profile
@@ -66,18 +65,20 @@
                 const response = await fetch(apiUrl);
                 const data = await response.json();
 
-                // Find user by email in column C and get their full name from column H, profile picture URL from column G
+                // Find user by email in column C and get their full name and profile picture URL
                 const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
                 
                 if (userRow) {
                     const fullName = userRow[5];  // Column H contains the full name
-                    const profilePicUrl = userRow[6];  // Column G contains the profile picture URL
+                    const profilePicUrl = userRow[6];  // Column I (6th column) contains the profile picture URL
 
-                    // Update full name
+                    // Update name and profile picture
                     nameElement.textContent = fullName || "Full Name Not Found";
-
-                    // Update profile picture URL if available; else set a default picture
-                    profilePicElement.src = profilePicUrl || "https://img.freepik.com/premium-vector/gray-circular-user-icon-darker-inner-silhouette-within-light-gray-circle-minimal-modern-style_213497-4884.jpg";
+                    if (profilePicUrl) {
+                        profilePicElement.src = profilePicUrl; // Set the profile picture URL
+                    } else {
+                        profilePicElement.src = "https://img.freepik.com/premium-vector/gray-circular-user-icon-darker-inner-silhouette-within-light-gray-circle-minimal-modern-style_213497-4884.jpg";
+                    }
                 } else {
                     nameElement.textContent = "User not registered";
                 }
@@ -101,7 +102,3 @@
     // Run check on page load
     window.addEventListener('DOMContentLoaded', checkLoginStatus);
 </script>
-
-
-</body>
-</html>
