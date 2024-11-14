@@ -46,54 +46,62 @@
       </footer>
     <!-- JavaScript for Session Management and Profile Fetching -->
     <script>
-        // Check login status and fetch user details
-        async function checkLoginStatus() {
-            const loggedInUser = localStorage.getItem('loggedInUser');
-            const userStatus = localStorage.getItem('userStatus');
-            const nameElement = document.querySelector('.name');
-            const emailElement = document.querySelector('.email');
-            const userInfoElement = document.querySelector('.profile-section');
+    // Check login status and fetch user details
+    async function checkLoginStatus() {
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        const userStatus = localStorage.getItem('userStatus');
+        const nameElement = document.querySelector('.name');
+        const emailElement = document.querySelector('.email');
+        const userInfoElement = document.querySelector('.profile-section');
+        const profilePicElement = document.querySelector('.profile-section img');  // Select the profile picture <img> element
 
-            if (loggedInUser && userStatus === 'APPROVED') {
-                // Set email address in profile
-                emailElement.textContent = loggedInUser;
+        if (loggedInUser && userStatus === 'APPROVED') {
+            // Set email address in profile
+            emailElement.textContent = loggedInUser;
 
-                // Fetch user's full name from Google Sheets API
-                const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
+            // Fetch user's full name and profile picture URL from Google Sheets API
+            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
 
-                try {
-                    const response = await fetch(apiUrl);
-                    const data = await response.json();
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
 
-                    // Find user by email in column C and get their full name from column H
-                    const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
-                    
-                    if (userRow) {
-                        const fullName = userRow[5];  // Column H contains the full name
-                        nameElement.textContent = fullName || "Full Name Not Found";
-                    } else {
-                        nameElement.textContent = "User not registered";
-                    }
-                } catch (error) {
-                    console.error("Error fetching user data:", error);
-                    nameElement.textContent = "Error loading name";
+                // Find user by email in column C and get their full name from column H, profile picture URL from column G
+                const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
+                
+                if (userRow) {
+                    const fullName = userRow[5];  // Column H contains the full name
+                    const profilePicUrl = userRow[6];  // Column G contains the profile picture URL
+
+                    // Update full name
+                    nameElement.textContent = fullName || "Full Name Not Found";
+
+                    // Update profile picture URL if available; else set a default picture
+                    profilePicElement.src = profilePicUrl || "https://img.freepik.com/premium-vector/gray-circular-user-icon-darker-inner-silhouette-within-light-gray-circle-minimal-modern-style_213497-4884.jpg";
+                } else {
+                    nameElement.textContent = "User not registered";
                 }
-            } else {
-                userInfoElement.style.display = 'none';
-                window.location.href = 'signin.html';
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+                nameElement.textContent = "Error loading name";
             }
-        }
-
-        // Handle logout
-            document.getElementById('logoutLink').addEventListener('click', function () {
-            localStorage.removeItem('loggedInUser');
-            localStorage.removeItem('userStatus');
+        } else {
+            userInfoElement.style.display = 'none';
             window.location.href = 'signin.html';
-        });
+        }
+    }
 
-        // Run check on page load
-        window.addEventListener('DOMContentLoaded', checkLoginStatus);
-    </script>
+    // Handle logout
+    document.getElementById('logoutLink').addEventListener('click', function () {
+        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('userStatus');
+        window.location.href = 'signin.html';
+    });
+
+    // Run check on page load
+    window.addEventListener('DOMContentLoaded', checkLoginStatus);
+</script>
+
 
 </body>
 </html>
