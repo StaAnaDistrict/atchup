@@ -48,64 +48,59 @@
     <!-- JavaScript for Session Management and Profile Fetching -->
     <script>
     async function checkLoginStatus() {
-        const loggedInUser = localStorage.getItem('loggedInUser');
-        const userStatus = localStorage.getItem('userStatus');
-        const nameElement = document.querySelector('.name');
-        const emailElement = document.querySelector('.email');
-        const profilePicElement = document.getElementById('profilePicture');
-        const userInfoElement = document.querySelector('.profile-section');
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const userStatus = localStorage.getItem('userStatus');
+    const nameElement = document.querySelector('.name');
+    const emailElement = document.querySelector('.email');
+    const profilePicElement = document.getElementById('profilePicture');
+    const userInfoElement = document.querySelector('.profile-section');
 
-        if (loggedInUser && userStatus === 'APPROVED') {
-            emailElement.textContent = loggedInUser;
+    if (loggedInUser && userStatus === 'APPROVED') {
+        emailElement.textContent = loggedInUser;
 
-            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
+        const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=YOUR_API_KEY';
 
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                
-                // Log the response data to inspect the structure
-                console.log("API Data:", data);
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
 
-                // Check if data.values exists and has rows
-                if (data && data.values && Array.isArray(data.values)) {
-                    const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
+            // Check if data.values exists and has rows
+            if (data && data.values && Array.isArray(data.values)) {
+                const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
 
-                    if (userRow) {
-                        const fullName = userRow[5];  // Full name column (Column H)
-                        const profilePicUrl = userRow[6];  // Profile picture URL column (Column I)
+                if (userRow) {
+                    const fullName = userRow[5];  // Full name column
+                    const profilePicUrl = userRow[6];  // Profile picture URL column
 
-                        nameElement.textContent = fullName || "Full Name Not Found";
-                        
-                        // Use the `displayProfilePicture` function to dynamically set the image source
-                        displayProfilePicture(profilePicUrl, profilePicElement);
-
-                    } else {
-                        nameElement.textContent = "User not registered";
-                    }
+                    nameElement.textContent = fullName || "Full Name Not Found";
+                    displayProfilePicture(profilePicUrl, profilePicElement);
                 } else {
-                    console.error("Data structure unexpected or missing 'values' array.");
-                    nameElement.textContent = "Error loading data";
+                    nameElement.textContent = "User not registered";
                 }
-            } catch (error) {
-                console.error("Error fetching user data:", error);
-                nameElement.textContent = "Error loading name";
+            } else {
+                console.error("Data structure unexpected or missing 'values' array.");
+                nameElement.textContent = "Error loading data";
             }
-        } else {
-            userInfoElement.style.display = 'none';
-            window.location.href = 'signin.html';
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+            nameElement.textContent = "Error loading name";
         }
+    } else {
+        userInfoElement.style.display = 'none';
+        window.location.href = 'signin.html';
     }
+}
 
-    // Function to display profile picture
-    function displayProfilePicture(value, imgElement) {
-        if (value && typeof value === 'string' && value.trim().toLowerCase().startsWith('http')) {
-            imgElement.src = value;
-        } else {
-            // Use default placeholder if the URL is not valid
-            imgElement.src = "https://img.freepik.com/premium-vector/gray-circular-user-icon-darker-inner-silhouette-within-light-gray-circle-minimal-modern-style_213497-4884.jpg";
-        }
+// Function to display profile picture
+function displayProfilePicture(value, imgElement) {
+    if (value && typeof value === 'string' && value.trim().toLowerCase().startsWith('http')) {
+        imgElement.src = value;
+    } else {
+        // Use default placeholder if the URL is not valid
+        imgElement.src = "https://img.freepik.com/premium-vector/gray-circular-user-icon-darker-inner-silhouette-within-light-gray-circle-minimal-modern-style_213497-4884.jpg";
     }
+}
+
 
     // Logout functionality
     document.getElementById('logoutLink').addEventListener('click', function () {
