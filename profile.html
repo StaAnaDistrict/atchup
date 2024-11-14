@@ -63,20 +63,29 @@
             try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
-
-                const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
                 
-                if (userRow) {
-                    const fullName = userRow[5];  // Full name column (Column H)
-                    const profilePicUrl = userRow[6];  // Profile picture URL column (Column I)
+                // Log the response data to inspect the structure
+                console.log("API Data:", data);
 
-                    nameElement.textContent = fullName || "Full Name Not Found";
-                    
-                    // Use the `displayProfilePicture` function to dynamically set the image source
-                    displayProfilePicture(profilePicUrl, profilePicElement);
+                // Check if data.values exists and has rows
+                if (data && data.values && Array.isArray(data.values)) {
+                    const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
 
+                    if (userRow) {
+                        const fullName = userRow[5];  // Full name column (Column H)
+                        const profilePicUrl = userRow[6];  // Profile picture URL column (Column I)
+
+                        nameElement.textContent = fullName || "Full Name Not Found";
+                        
+                        // Use the `displayProfilePicture` function to dynamically set the image source
+                        displayProfilePicture(profilePicUrl, profilePicElement);
+
+                    } else {
+                        nameElement.textContent = "User not registered";
+                    }
                 } else {
-                    nameElement.textContent = "User not registered";
+                    console.error("Data structure unexpected or missing 'values' array.");
+                    nameElement.textContent = "Error loading data";
                 }
             } catch (error) {
                 console.error("Error fetching user data:", error);
