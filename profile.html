@@ -58,7 +58,7 @@
         if (loggedInUser && userStatus === 'APPROVED') {
             emailElement.textContent = loggedInUser;
 
-            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/%27Learners%27%20Profile%27!A1?key=AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
+            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
 
             try {
                 const response = await fetch(apiUrl);
