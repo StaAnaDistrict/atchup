@@ -47,36 +47,34 @@
       </footer>
     <!-- JavaScript for Session Management and Profile Fetching -->
     <script>
-    // Check login status and fetch user details
     async function checkLoginStatus() {
         const loggedInUser = localStorage.getItem('loggedInUser');
         const userStatus = localStorage.getItem('userStatus');
         const nameElement = document.querySelector('.name');
         const emailElement = document.querySelector('.email');
-        const profilePicElement = document.getElementById('profilePicture'); // Use the new ID
+        const profilePicElement = document.getElementById('profilePicture');
         const userInfoElement = document.querySelector('.profile-section');
 
         if (loggedInUser && userStatus === 'APPROVED') {
-            // Set email address in profile
             emailElement.textContent = loggedInUser;
 
-            // Fetch user's full name and profile picture URL from Google Sheets API
-            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=AIzaSyAC2cZQFW6J70ia1n5yLTGoxIVvu8FH17s';
+            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1mDQKmYmwCZrtsSg6FE1ascQO5toMKGiwj5xo7-bRXsk/values/UserRegistrations!C2:H?key=YOUR_API_KEY';
 
             try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
 
-                // Find user by email in column C and get their full name and profile picture URL
                 const userRow = data.values.find(row => row[0].trim().toLowerCase() === loggedInUser.trim().toLowerCase());
                 
                 if (userRow) {
-                    const fullName = userRow[5];  // Column H contains the full name
-                    const profilePicUrl = userRow[6];  // Column I contains the profile picture URL
+                    const fullName = userRow[5];  // Full name column (Column H)
+                    const profilePicUrl = userRow[6];  // Profile picture URL column (Column I)
 
-                    // Update name and profile picture
                     nameElement.textContent = fullName || "Full Name Not Found";
-                    profilePicElement.src = profilePicUrl || "https://img.freepik.com/premium-vector/gray-circular-user-icon-darker-inner-silhouette-within-light-gray-circle-minimal-modern-style_213497-4884.jpg";
+                    
+                    // Use the `displayProfilePicture` function to dynamically set the image source
+                    displayProfilePicture(profilePicUrl, profilePicElement);
+
                 } else {
                     nameElement.textContent = "User not registered";
                 }
@@ -90,16 +88,27 @@
         }
     }
 
-    // Handle logout
+    // Function to display profile picture
+    function displayProfilePicture(value, imgElement) {
+        if (value && typeof value === 'string' && value.trim().toLowerCase().startsWith('http')) {
+            imgElement.src = value;
+        } else {
+            // Use default placeholder if the URL is not valid
+            imgElement.src = "https://img.freepik.com/premium-vector/gray-circular-user-icon-darker-inner-silhouette-within-light-gray-circle-minimal-modern-style_213497-4884.jpg";
+        }
+    }
+
+    // Logout functionality
     document.getElementById('logoutLink').addEventListener('click', function () {
         localStorage.removeItem('loggedInUser');
         localStorage.removeItem('userStatus');
         window.location.href = 'signin.html';
     });
 
-    // Run check on page load
+    // Check login on page load
     window.addEventListener('DOMContentLoaded', checkLoginStatus);
 </script>
+
 
     
 
