@@ -66,32 +66,6 @@
         }
     });
 
-    function checkLoginStatus() {
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    const userStatus = localStorage.getItem('userStatus');
-    const userInfoElement = document.getElementById('userInfo');
-    const loggedInUserElement = document.getElementById('loggedInUser');
-
-    if (loggedInUser && userStatus === 'APPROVED') {
-        loggedInUserElement.textContent = `Logged in as: ${loggedInUser}`;
-        userInfoElement.style.display = 'flex';
-    } else {
-        userInfoElement.style.display = 'none';
-        localStorage.removeItem('loggedInUser');
-        localStorage.removeItem('userStatus');
-        window.location.href = 'signin.html?message=Please log in to access this page.';
-    }
-    }
-
-    document.getElementById('logoutBtn').addEventListener('click', function() {
-    localStorage.removeItem('loggedInUser');
-    localStorage.removeItem('userStatus');
-    window.location.href = 'signin.html';
-});
-
-    // Call this function when the page loads
-    window.addEventListener('DOMContentLoaded', checkLoginStatus);
-
     document.addEventListener('DOMContentLoaded', function() {
         checkDatabaseStatus();
         
@@ -1673,32 +1647,33 @@
           }
                 }
           
-          function getGradeDataBox3(rowNumber, gradeValue, schoolYearValue, scholasticData) {
+                function getGradeDataBox3(rowNumber, gradeValue, schoolYearValue, scholasticData) {
           
             
             
-            // Check for empty, "NA", or "#N/A" values
-            if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
-              
-              return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
-            }
-          
-            
-            const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
-            const grade = parseInt(gradeValue, 10);
-          
-            let q1 = '', q2 = '', q3 = '', q4 = '', final = '', remarks = '';
-          
-          
-            function getColumnIndex(letter) {
-            let index = 0;
-            for (let i = 0; i < letter.length; i++) {
-              index = index * 26 + letter.charCodeAt(i) - 64;
-            }
-            return index - 1; // Subtract 1 because array indices start at 0
-          }
-          
-            switch (rowNumber) {
+                  // Check for empty, "NA", or "#N/A" values
+                  if (isEmpty(gradeValue) || isEmpty(schoolYearValue)) {
+                    
+                    return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
+                  }
+                
+                  
+                  const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
+                  const grade = parseInt(gradeValue, 10);
+                  const sanitizeValue = (value) => (value === undefined || value === null || value === '') ? '' : value;
+                
+                  let q1 = '', q2 = '', q3 = '', q4 = '', final = '', remarks = '';
+                
+                
+                  function getColumnIndex(letter) {
+                  let index = 0;
+                  for (let i = 0; i < letter.length; i++) {
+                    index = index * 26 + letter.charCodeAt(i) - 64;
+                  }
+                  return index - 1; // Subtract 1 because array indices start at 0
+                }
+
+                  switch (rowNumber) {
               case 7: // Mother Tongue
                 if (grade === 1 && schoolYearStart > 2023) {
                   q1 = scholasticData[getColumnIndex('JM')];
@@ -1706,7 +1681,7 @@
                   q3 = scholasticData[getColumnIndex('LE')];
                   q4 = scholasticData[getColumnIndex('MA')];
                   final = scholasticData[getColumnIndex('MW')];
-                } else if (grade > 1 && schoolYearStart > 2023) {
+                } else if (grade > 1 && schoolYearStart > 2024) {
                   q1 = scholasticData[getColumnIndex('IY')];
                   q2 = scholasticData[getColumnIndex('JU')];
                   q3 = scholasticData[getColumnIndex('KQ')];
@@ -1721,13 +1696,13 @@
                 }
                 break;
               case 8: // Filipino
-                if (grade === 1 && schoolYearStart > 2023) {
+                if (grade === 1 && schoolYearStart > 2024) {
                   q1 = scholasticData[getColumnIndex('JN')];
                   q2 = scholasticData[getColumnIndex('KJ')];
                   q3 = scholasticData[getColumnIndex('LF')];
                   q4 = scholasticData[getColumnIndex('MB')];
                   final = scholasticData[getColumnIndex('MX')];
-                } else if (grade > 1 && schoolYearStart > 2023) {
+                } else if (grade > 1 && schoolYearStart > 2024) {
                   q1 = scholasticData[getColumnIndex('IZ')];
                   q2 = scholasticData[getColumnIndex('JV')];
                   q3 = scholasticData[getColumnIndex('KR')];
@@ -1742,7 +1717,7 @@
                 }
                 break;
               case 9: // English
-                if (grade < 7 && schoolYearStart > 2023) {
+                if (grade < 7 && schoolYearStart > 2024) {
                   q1 = scholasticData[getColumnIndex('JA')];
                   q2 = scholasticData[getColumnIndex('JW')];
                   q3 = scholasticData[getColumnIndex('KS')];
@@ -1757,7 +1732,7 @@
                 }
                 break;
               case 10: // Mathematics
-                if (schoolYearStart > 2023) {
+                if (schoolYearStart > 2024) {
                   if (grade < 4) {
                     q1 = scholasticData[getColumnIndex('IW')];
                     q2 = scholasticData[getColumnIndex('JS')];
@@ -1780,7 +1755,7 @@
                 }
                 break;
               case 11: // Science
-                if (grade < 7 && schoolYearStart > 2023) {
+                if (grade < 7 && schoolYearStart > 2024) {
                   q1 = scholasticData[getColumnIndex('IV')];
                   q2 = scholasticData[getColumnIndex('JR')];
                   q3 = scholasticData[getColumnIndex('KN')];
@@ -1795,9 +1770,13 @@
                 }
                 break;
               case 12: // Araling Panlipunan
-                if (grade < 3 && schoolYearStart > 2023) {
-                  q1 = q2 = q3 = q4 = final = "";
-                } else if (schoolYearStart > 2023 && grade < 7) {
+              if (grade === 1 && schoolYearStart > 2023) {
+                q1 = q2 = q3 = q4 = final = "";
+              } else if (grade === 2 && schoolYearStart >= 2025) {
+                q1 = q2 = q3 = q4 = final = "";
+              } else if (grade === 3 && schoolYearStart >= 2026) {
+                q1 = q2 = q3 = q4 = final = "";    
+              } else if (grade === 4 && schoolYearStart >=2024) {
                   q1 = scholasticData[getColumnIndex('JB')];
                   q2 = scholasticData[getColumnIndex('JX')];
                   q3 = scholasticData[getColumnIndex('KT')];
@@ -1812,7 +1791,7 @@
                 }
                 break;
               case 13: // EPP/TLE
-                if (schoolYearStart > 2023 && grade < 4) {
+                if (schoolYearStart > 2024 && grade < 4) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[getColumnIndex('JD')];
@@ -1823,7 +1802,7 @@
                 }
                 break;
               case 14: // MAPEH
-                if (schoolYearStart > 2023 && grade < 4) {
+                if (schoolYearStart > 2024 && grade < 4) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[getColumnIndex('JK')];
@@ -1834,7 +1813,7 @@
                 }
                 break;
               case 15: // Music
-                if (schoolYearStart > 2023) {
+                if (schoolYearStart > 2024) {
                   if (grade < 4) {
                     q1 = q2 = q3 = q4 = final = "";
                   } else if (grade >= 4) {
@@ -1853,7 +1832,7 @@
                 }
                 break;
               case 16: // Arts
-                if (schoolYearStart > 2023) {
+                if (schoolYearStart > 2024) {
                   if (grade < 4) {
                     q1 = q2 = q3 = q4 = final = "";
                   } else if (grade >= 4) {
@@ -1872,7 +1851,7 @@
                 }
                 break;
               case 17: // Physical Education
-                if (schoolYearStart > 2023 && grade < 7) {
+                if (schoolYearStart > 2024 && grade < 7) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[getColumnIndex('JG')];
@@ -1883,7 +1862,7 @@
                 }
                 break;
               case 18: // Health
-                if (schoolYearStart > 2023 && grade < 7) {
+                if (schoolYearStart > 2024 && grade < 7) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[getColumnIndex('JH')];
@@ -1894,7 +1873,7 @@
                 }
                 break;
               case 19: // Edukasyon sa Pagpapakatao
-                if (schoolYearStart > 2023 && grade < 7) {
+                if (schoolYearStart > 2024 && grade < 7) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[getColumnIndex('JL')];
@@ -1936,6 +1915,12 @@
                 final = scholasticData[getColumnIndex('NA')];
                 break;
             }
+
+            q1 = sanitizeValue(q1);
+            q2 = sanitizeValue(q2);
+            q3 = sanitizeValue(q3);
+            q4 = sanitizeValue(q4);
+            final = sanitizeValue(final);  
           
               // Determine remarks
           if (rowNumber === 22) {
