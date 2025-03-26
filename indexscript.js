@@ -1381,7 +1381,7 @@
           
             switch (rowNumber) {
               case 7:
-                if (grade === 1 && schoolYearStart > 2024) {
+                if (grade === 1 && schoolYearStart > 2023) {
                   q1 = scholasticData[148]; // Column ES
                   q2 = scholasticData[170]; // Column FO
                   q3 = scholasticData[192]; // Column GK
