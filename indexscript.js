@@ -1402,7 +1402,7 @@
                 }
                 break;
               case 8:
-                if (grade === 1 && schoolYearStart > 2024) {
+                if (grade === 1 && schoolYearStart > 2023) {
                   q1 = scholasticData[149]; // Column ET
                   q2 = scholasticData[171]; // Column FP
                   q3 = scholasticData[193]; // Column GL
@@ -1423,7 +1423,7 @@
                 }
                 break;
               case 9:
-                if (grade < 7 && schoolYearStart > 2024) {
+                if (grade < 7 && schoolYearStart > 2023) {
                   q1 = scholasticData[136]; // Column EG
                   q2 = scholasticData[158]; // Column FC
                   q3 = scholasticData[180]; // Column FY
@@ -1438,7 +1438,7 @@
                 }
                 break;
               case 10:
-                if (schoolYearStart > 2024) {
+                if (schoolYearStart > 2023) {
                   if (grade < 4) {
                     q1 = scholasticData[132]; // Column EC
                     q2 = scholasticData[154]; // Column EY
@@ -1461,7 +1461,7 @@
                 }
                 break;
               case 11:
-                if (grade < 7 && schoolYearStart > 2024) {
+                if (grade < 7 && schoolYearStart > 2023) {
                   q1 = scholasticData[131]; // Column EB
                   q2 = scholasticData[153]; // Column EX
                   q3 = scholasticData[175]; // Column FT
@@ -1497,7 +1497,7 @@
                 }
                 break;
               case 13:
-                if (schoolYearStart > 2024 && grade < 4) {
+                if (schoolYearStart > 2023 && grade < 4) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[139]; // Column EJ
@@ -1508,7 +1508,7 @@
                 }
                 break;
               case 14:
-                if (schoolYearStart > 2024 && grade < 4) {
+                if (schoolYearStart > 2023 && grade < 4) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[146]; // Column EQ
@@ -1519,7 +1519,7 @@
                 }
                 break;
               case 15:
-                if (schoolYearStart > 2024) {
+                if (schoolYearStart > 2023) {
                   if (grade < 4) {
                     q1 = q2 = q3 = q4 = final = "";
                   } else if (grade >= 4) {
@@ -1538,7 +1538,7 @@
                 }
                 break;
               case 16:
-                if (schoolYearStart > 2024) {
+                if (schoolYearStart > 2023) {
                   if (grade < 4) {
                     q1 = q2 = q3 = q4 = final = "";
                   } else if (grade >= 4) {
@@ -1557,7 +1557,7 @@
                 }
                 break;
               case 17:
-                if (schoolYearStart > 2024 && grade < 7) {
+                if (schoolYearStart > 2023 && grade < 7) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[142]; // Column EM
@@ -1568,7 +1568,7 @@
                 }
                 break;
               case 18:
-                if (schoolYearStart > 2024 && grade < 7) {
+                if (schoolYearStart > 2023 && grade < 7) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[143]; // Column EN
@@ -1579,7 +1579,7 @@
                 }
                 break;
               case 19:
-                if (schoolYearStart > 2024 && grade < 7) {
+                if (schoolYearStart > 2023 && grade < 7) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else {
                   q1 = scholasticData[147]; // Column ER
