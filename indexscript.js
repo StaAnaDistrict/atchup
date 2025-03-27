@@ -1423,7 +1423,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 9:
-            if (grade < 7 && schoolYearStart > 2023) {
+            if (grade === 1 && schoolYearStart > 2023) {
               q1 = scholasticData[136]; // Column EG
               q2 = scholasticData[158]; // Column FC
               q3 = scholasticData[180]; // Column FY
@@ -1438,21 +1438,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 10:
-            if (schoolYearStart > 2023) {
-              if (grade < 4) {
+            if (grade === 1 && schoolYearStart > 2023) {
                 q1 = scholasticData[132]; // Column EC
                 q2 = scholasticData[154]; // Column EY
                 q3 = scholasticData[176]; // Column FU
                 q4 = scholasticData[198]; // Column GQ
                 final = scholasticData[220]; // Column HM
-              } else if (grade >= 4) {
-                q1 = scholasticData[138]; // Column EI
-                q2 = scholasticData[160]; // Column FE
-                q3 = scholasticData[182]; // Column GA
-                q4 = scholasticData[204]; // Column GW
-                final = scholasticData[226]; // Column HS
-              }
-            } else {
+            }
+            else {
               q1 = scholasticData[136]; // Column EG
               q2 = scholasticData[158]; // Column FC
               q3 = scholasticData[180]; // Column FY
@@ -1478,11 +1471,11 @@ document.addEventListener('DOMContentLoaded', function() {
           case 12:
             if (grade === 1 && schoolYearStart > 2023) {
               q1 = q2 = q3 = q4 = final = "";
-            } else if (grade === 2 && schoolYearStart >= 2024) {
+            } else if (grade === 2 && schoolYearStart > 2024) {
               q1 = q2 = q3 = q4 = final = "";
-            } else if (grade === 3 && schoolYearStart >= 2025) {
+            } else if (grade === 3 && schoolYearStart > 2025) {
               q1 = q2 = q3 = q4 = final = "";    
-            } else if (grade === 4 && schoolYearStart >=2024) {
+            } else if (grade === 4 && schoolYearStart > 2024) {
               q1 = scholasticData[137]; // Column EH
               q2 = scholasticData[159]; // Column FD
               q3 = scholasticData[181]; // Column FZ
@@ -1508,7 +1501,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 14:
-            if (schoolYearStart > 2023 && grade < 4) {
+            if (schoolYearStart > 2024 && grade < 4) {
               q1 = q2 = q3 = q4 = final = "";
             } else {
               q1 = scholasticData[146]; // Column EQ
@@ -1519,7 +1512,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 15:
-            if (schoolYearStart > 2023) {
+            if (schoolYearStart > 2024) {
               if (grade < 4) {
                 q1 = q2 = q3 = q4 = final = "";
               } else if (grade >= 4) {
@@ -1538,7 +1531,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 16:
-            if (schoolYearStart > 2023) {
+            if (schoolYearStart > 2024) {
               if (grade < 4) {
                 q1 = q2 = q3 = q4 = final = "";
               } else if (grade >= 4) {
@@ -1557,7 +1550,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 17:
-            if (schoolYearStart > 2023 && grade < 7) {
+            if (schoolYearStart > 2024 && grade < 7) {
               q1 = q2 = q3 = q4 = final = "";
             } else {
               q1 = scholasticData[142]; // Column EM
@@ -1568,7 +1561,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 18:
-            if (schoolYearStart > 2023 && grade < 7) {
+            if (schoolYearStart > 2024 && grade < 7) {
               q1 = q2 = q3 = q4 = final = "";
             } else {
               q1 = scholasticData[143]; // Column EN
@@ -1579,7 +1572,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 19:
-            if (schoolYearStart > 2023 && grade < 7) {
+            if (schoolYearStart > 2024 && grade < 7) {
               q1 = q2 = q3 = q4 = final = "";
             } else {
               q1 = scholasticData[147]; // Column ER
