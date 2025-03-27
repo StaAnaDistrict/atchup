@@ -2020,7 +2020,7 @@ document.addEventListener('DOMContentLoaded', function() {
               }
               break;
             case 9:
-              if (grade < 7 && schoolYearStart > 2023) {
+              if (grade > 3 && schoolYearStart > 2023) {
                 q1 = scholasticData[getColumnIndex('NU')];
                 q2 = scholasticData[getColumnIndex('OQ')];
                 q3 = scholasticData[getColumnIndex('PM')];
