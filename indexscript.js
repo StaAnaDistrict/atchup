@@ -1388,11 +1388,11 @@ document.addEventListener('DOMContentLoaded', function() {
               q4 = scholasticData[214]; // Column HG
               final = scholasticData[236]; // Column IC
             } else if (grade > 1 && schoolYearStart > 2023) {
-              q1 = scholasticData[134]; // Column EE
-              q2 = scholasticData[156]; // Column FA
-              q3 = scholasticData[178]; // Column FW
-              q4 = scholasticData[200]; // Column GS
-              final = scholasticData[222]; // Column HO
+              q1 = scholasticData[133]; // Column ED
+              q2 = scholasticData[155]; // Column EZ
+              q3 = scholasticData[177]; // Column FV
+              q4 = scholasticData[199]; // Column GR
+              final = scholasticData[221]; // Column HN
             } else {
               q1 = scholasticData[133]; // Column ED
               q2 = scholasticData[155]; // Column EZ
@@ -1409,11 +1409,11 @@ document.addEventListener('DOMContentLoaded', function() {
               q4 = scholasticData[215]; // Column HH
               final = scholasticData[237]; // Column ID
             } else if (grade > 1 && schoolYearStart > 2023) {
-              q1 = scholasticData[135]; // Column EF
-              q2 = scholasticData[157]; // Column FB
-              q3 = scholasticData[179]; // Column FX
-              q4 = scholasticData[201]; // Column GT
-              final = scholasticData[223]; // Column HP
+              q1 = scholasticData[134]; // Column ED
+              q2 = scholasticData[156]; // Column FA
+              q3 = scholasticData[178]; // Column FW
+              q4 = scholasticData[200]; // Column GS
+              final = scholasticData[222]; // Column Ho
             } else {
               q1 = scholasticData[134]; // Column EE
               q2 = scholasticData[156]; // Column FA
