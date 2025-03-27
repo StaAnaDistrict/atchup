@@ -2106,8 +2106,7 @@ document.addEventListener('DOMContentLoaded', function() {
               }
               break;
             case 15:
-              if (schoolYearStart > 2026) {
-                if (grade < 4) {
+              if (schoolYearStart > 2026 && grade < 4) {
                   q1 = q2 = q3 = q4 = final = "";
                 } else if (grade >= 4) {
                   q1 = scholasticData[getColumnIndex('OC')];
@@ -2115,7 +2114,6 @@ document.addEventListener('DOMContentLoaded', function() {
                   q3 = scholasticData[getColumnIndex('PU')];
                   q4 = scholasticData[getColumnIndex('QQ')];
                   final = scholasticData[getColumnIndex('RM')];
-                }
               } else {
                 q1 = scholasticData[getColumnIndex('NY')];
                 q2 = scholasticData[getColumnIndex('OU')];
@@ -2123,6 +2121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 q4 = scholasticData[getColumnIndex('QM')];
                 final = scholasticData[getColumnIndex('RI')];
               }
+            
               break;
             case 16:
               if (schoolYearStart > 2026) {
