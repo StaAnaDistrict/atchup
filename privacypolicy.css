@@ -703,8 +703,8 @@ header {
 }
 
 .logo {
-  height: 40px;
-  width: 40px;
+  height: 40%;
+  width: 40%;
   object-fit: contain;
   display: block;
   margin: 0 auto;
