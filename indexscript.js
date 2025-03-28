@@ -358,18 +358,23 @@ document.addEventListener('DOMContentLoaded', function() {
               }
             }
       
-            function getRow13Column1Text(gradeValue, schoolYearValue) {
+            function getRow13Column1Text(gradeValue, schoolYearValue, sectionValue) {
               // Extract the first four characters of the school year and convert to a number
               const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
               
               // Convert grade to a number (in case it's stored as a string)
               const grade = parseInt(gradeValue, 10);
-      
-              if (schoolYearStart > 2023 && grade < 4) {
-                return ""; // Empty string for grades 1-3 after 2023
-              } else {
+
+              // Ensure sectionValue is treated as a string
+              const section = String(sectionValue);
+
+              if (grade === 1 && schoolYearStart > 2023 && section === "MAGNOLIA") {
+                return "Science";
+              } else if (grade < 3 && schoolYearStart > 2023) {
+                return ""; // Empty string for grades 1-2 after 2023
+              } else if (schoolYearStart > 2023 && grade < 7) {
                 return "EPP / TLE";
-              }
+              } 
             }
       
             function getRow14Column1Text(gradeValue, schoolYearValue) {
@@ -914,8 +919,10 @@ document.addEventListener('DOMContentLoaded', function() {
                   return "Araling Panlipunan";
                 }
               } else if (rowNumber === 13) {
-                if (grade === 1 && schoolYearStart > 2023) {
+                if (grade === 1 && schoolYearStart > 2023 && section === "MAGNOLIA") {
                   return "Science";
+                } else if (grade === 1 && schoolYearStart > 2023) {
+                  return "";
                 } else if (grade === 2 && schoolYearStart >= 2025) {
                   return "";
                 } else if (grade === 3 && schoolYearStart >= 2026) {
