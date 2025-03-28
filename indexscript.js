@@ -817,7 +817,7 @@ document.addEventListener('DOMContentLoaded', function() {
               `;
             }
       
-            function getSubjectText(rowNumber, gradeValue, schoolYearValue, boxNumber) {
+            function getSubjectText(rowNumber, gradeValue, schoolYearValue, sectionValue, boxNumber) {
               // Extract the first four characters of the school year and convert to a number
               const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
               
