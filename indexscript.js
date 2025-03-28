@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
               // Ensure sectionValue is treated as a string
               const section = String(sectionValue);
       
-              if (grade === 1 && schoolYearStart > 2023 && section === "Magnolia") {
+              if (grade === 1 && schoolYearStart > 2023 && section === "MAGNOLIA") {
                 return "English";
               } else if (grade < 3 && schoolYearStart > 2023) {
                 return ""; // Empty string for grades 1-2 after 2023
@@ -900,7 +900,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   return "Science"
                 }
               } else if (rowNumber === 12) {
-                if (grade === 1 && schoolYearStart > 2023 && section === "Magnolia") {
+                if (grade === 1 && schoolYearStart > 2023 && section === "MAGNOLIA") {
                   return "English";
                 } else if (grade === 1 && schoolYearStart > 2023) {
                   return "";  
