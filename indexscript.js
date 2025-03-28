@@ -905,7 +905,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
               } else if (rowNumber === 13) {
                 if (grade === 1 && schoolYearStart > 2023) {
-                  return "";
+                  return "Science";
                 } else if (grade === 2 && schoolYearStart >= 2025) {
                   return "";
                 } else if (grade === 3 && schoolYearStart >= 2026) {
