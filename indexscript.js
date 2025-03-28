@@ -893,7 +893,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
               } else if (rowNumber === 12) {
                 if (grade === 1 && schoolYearStart > 2023) {
-                  return "";
+                  return "English";
                 } else if (grade === 2 && schoolYearStart >= 2025) {
                   return "Science";
                 } else if (grade === 3 && schoolYearStart >= 2026) {
