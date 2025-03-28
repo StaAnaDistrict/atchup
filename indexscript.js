@@ -1471,7 +1471,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             break;
           case 11:
-            if (grade < 7 && schoolYearStart > 2023) {
+            if (grade === 2 && schoolYearStart === 2024){
+              q1 = scholasticData[137]; // Column EH
+              q2 = scholasticData[159]; // Column FD
+              q3 = scholasticData[181]; // Column FZ
+              q4 = scholasticData[203]; // Column GV
+              final = scholasticData[225]; // Column HR
+            } else if (grade < 7 && schoolYearStart > 2023) {
               q1 = scholasticData[131]; // Column EB
               q2 = scholasticData[153]; // Column EX
               q3 = scholasticData[175]; // Column FT
