@@ -337,14 +337,19 @@ document.addEventListener('DOMContentLoaded', function() {
               }
             }
       
-            function getRow12Column1Text(gradeValue, schoolYearValue) {
+            function getRow12Column1Text(gradeValue, schoolYearValue, sectionValue) {
               // Extract the first four characters of the school year and convert to a number
               const schoolYearStart = parseInt(schoolYearValue.substring(0, 4), 10);
               
               // Convert grade to a number (in case it's stored as a string)
               const grade = parseInt(gradeValue, 10);
+
+              // Ensure sectionValue is treated as a string
+              const section = String(sectionValue);
       
-              if (grade < 3 && schoolYearStart > 2023) {
+              if (grade === 1 && schoolYearStart > 2023 && section === "Magnolia") {
+                return "English";
+              } else if (grade < 3 && schoolYearStart > 2023) {
                 return ""; // Empty string for grades 1-2 after 2023
               } else if (schoolYearStart > 2023 && grade < 7) {
                 return "Science";
@@ -574,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         // Add rows 7 to 22 with merged cells in the first column
         for (let i = 7; i <= 22; i++) {
-          let subjectText = getSubjectText(i, gradeValue, schoolYearValue);
+          let subjectText = getSubjectText(i, gradeValue, schoolYearValue, sectionValue, boxNumber);
           let cellClass = 'subject-cell';
           
           if ((i >= 7 && i <= 14) || i === 19 || i === 22) {
@@ -745,7 +750,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   cellClass += ' subject-cell-italic';
                 }
       
-                subjectText = getSubjectText(i, gradeValue, schoolYearValue, boxNumber);
+                subjectText = getSubjectText(i, gradeValue, schoolYearValue, data[isBox3 ? 45 : 54], boxNumber);
       
                 gradesSection += `
                   <tr class="grades-data-row">
@@ -823,6 +828,9 @@ document.addEventListener('DOMContentLoaded', function() {
               
               // Convert grade to a number (in case it's stored as a string)
               const grade = parseInt(gradeValue, 10);
+
+              // Ensure sectionValue is treated as a string
+              const section = String(sectionValue);
       
               if (rowNumber === 7) {
                 if (grade === 1 && schoolYearStart >= 2024) {
@@ -892,7 +900,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   return "Science"
                 }
               } else if (rowNumber === 12) {
-                if (grade === 1 && schoolYearStart > 2023 && sectionValue ==="MAGNOLIA") {
+                if (grade === 1 && schoolYearStart > 2023 && section === "Magnolia") {
                   return "English";
                 } else if (grade === 1 && schoolYearStart > 2023) {
                   return "";  
