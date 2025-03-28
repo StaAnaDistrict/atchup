@@ -892,10 +892,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   return "Science"
                 }
               } else if (rowNumber === 12) {
-                if (grade === 1 && schoolYearStart > 2023 && sectionValue === "Magnolia") {
+                if (grade === 1 && schoolYearStart > 2023) {
                   return "English";
-                } else if (grade === 1 && schoolYearStart > 2023) {
-                  return "";
                 } else if (grade === 2 && schoolYearStart >= 2025) {
                   return "Science";
                 } else if (grade === 3 && schoolYearStart >= 2026) {
@@ -2589,15 +2587,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 q3 = scholasticData[getColumnIndex('UV')];
                 q4 = scholasticData[getColumnIndex('VR')];
                 final = scholasticData[getColumnIndex('WN')];
-              }
-              break;
-            case 21: // Islamic Values Education (if not in row 20)
-              if (getSubjectText(21, gradeValue, schoolYearValue).includes("Islamic Values Education")) {
-                q1 = scholasticData[getColumnIndex('TP')];
-                q2 = scholasticData[getColumnIndex('TZ')];
-                q3 = scholasticData[getColumnIndex('UW')];
-                q4 = scholasticData[getColumnIndex('VQ')];
-                final = scholasticData[getColumnIndex('WR')];
               }
               break;
             case 22: // General Average
