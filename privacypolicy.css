@@ -688,13 +688,13 @@ footer {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   margin-bottom: 20px;
 }
 
 .header-right {
   display: flex;
-  align-items: center;
+  align-items: right;
 }
 
 .policy-text {
