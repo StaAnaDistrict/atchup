@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
               const grade = parseInt(gradeValue, 10);
       
               if (grade < 3 && schoolYearStart > 2023) {
-                return ""; // Empty string for grades 1-2 after 2023
+                return "English"; // Empty string for grades 1-2 after 2023
               } else if (schoolYearStart > 2023 && grade < 7) {
                 return "Science";
               } else {
