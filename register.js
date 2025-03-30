@@ -11,17 +11,16 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     if (password !== confirmPassword) {
         registrationMessage.textContent = 'Passwords do not match!';
         registrationMessage.style.color = 'yellow';
-        return; // Stop the form submission
+        return;
     }
 
     // Show spinner and overlay
     spinner.style.display = 'block';
     overlay.style.display = 'block';
-    // Hide any existing messages
-    registrationMessage.textContent = '';
     registrationMessage.style.display = 'none';
 
-    const formData = new FormData();
+    // Create URL-encoded string manually
+    const formData = new URLSearchParams();
     formData.append('firstname', document.getElementById('firstname').value);
     formData.append('lastname', document.getElementById('lastname').value);
     formData.append('email', document.getElementById('email').value);
@@ -30,27 +29,30 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
 
     fetch('https://script.google.com/macros/s/AKfycbyiM16I5BQqXbnISnrC1xqxy3euDdimi6Mo_Ngg-G5VC5-iu7FzCvEoAkGfcrpIzI1J/exec', {
         method: 'POST',
-        mode: 'no-cors',
-        body: formData
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString()
     })
-    .then(response => {
+    .then(response => response.json())
+    .then(data => {
         // Hide spinner and overlay
         spinner.style.display = 'none';
         overlay.style.display = 'none';
 
-        if (response.status === 'error') {
-            registrationMessage.textContent = response.message;
+        if (data.status === 'duplicate') {
+            registrationMessage.textContent = data.message;
             registrationMessage.style.color = 'yellow';
             registrationMessage.style.display = 'block';
-        } else {
+        } else if (data.status === 'success') {
             registrationMessage.textContent = 'Registration submitted! An email will be sent to you within 24 hours for confirmation.';
             registrationMessage.style.color = 'white';
             registrationMessage.style.display = 'block';
 
-            // Clear all input fields
+            // Clear form
             document.getElementById('registerForm').reset();
             
-            // Reset the label positions if using floating label effect
+            // Reset floating labels
             document.querySelectorAll('.form input').forEach(input => {
                 input.value = '';
                 const label = input.nextElementSibling;
@@ -58,14 +60,15 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
                     label.classList.remove('filled');
                 }
             });
+        } else {
+            throw new Error(data.message || 'Unknown error occurred');
         }
     })
     .catch(error => {
-        // Hide spinner and overlay
         spinner.style.display = 'none';
         overlay.style.display = 'none';
 
-        console.error('Error!', error.message);
+        console.error('Error:', error);
         registrationMessage.textContent = 'An error occurred. Please try again.';
         registrationMessage.style.color = 'red';
         registrationMessage.style.display = 'block';
