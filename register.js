@@ -38,22 +38,27 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         spinner.style.display = 'none';
         overlay.style.display = 'none';
 
-        console.log('Response received');
-        registrationMessage.textContent = 'Registration submitted! An email will be sent to you within 24 hours for confirmation.';
-        registrationMessage.style.color = 'white';
-        registrationMessage.style.display = 'block';
+        if (response.status === 'error') {
+            registrationMessage.textContent = response.message;
+            registrationMessage.style.color = 'yellow';
+            registrationMessage.style.display = 'block';
+        } else {
+            registrationMessage.textContent = 'Registration submitted! An email will be sent to you within 24 hours for confirmation.';
+            registrationMessage.style.color = 'white';
+            registrationMessage.style.display = 'block';
 
-        // Clear all input fields
-        document.getElementById('registerForm').reset();
-        
-        // If you're using the floating label effect, you might need to reset the label positions
-        document.querySelectorAll('.form input').forEach(input => {
-            input.value = '';
-            const label = input.nextElementSibling;
-            if (label) {
-                label.classList.remove('filled');
-            }
-        });
+            // Clear all input fields
+            document.getElementById('registerForm').reset();
+            
+            // Reset the label positions if using floating label effect
+            document.querySelectorAll('.form input').forEach(input => {
+                input.value = '';
+                const label = input.nextElementSibling;
+                if (label) {
+                    label.classList.remove('filled');
+                }
+            });
+        }
     })
     .catch(error => {
         // Hide spinner and overlay
