@@ -2091,7 +2091,15 @@ document.addEventListener('DOMContentLoaded', function() {
             case 12:
               if (grade < 2 && schoolYearStart > 2023) {
                 q1 = q2 = q3 = q4 = final = "";
-              } else if (schoolYearStart >= 2024 && grade < 7) {
+              } 
+              else if (grade === 3 && schoolYearStart === 2024){
+                q1 = scholasticData[getColumnIndex('NW')];
+                q2 = scholasticData[getColumnIndex('OS')];
+                q3 = scholasticData[getColumnIndex('PO')];
+                q4 = scholasticData[getColumnIndex('QK')];
+                final = scholasticData[getColumnIndex('RG')];
+              }
+              else if (schoolYearStart >= 2024 && grade < 7) {
                 q1 = scholasticData[getColumnIndex('NV')];
                 q2 = scholasticData[getColumnIndex('OR')];
                 q3 = scholasticData[getColumnIndex('PN')];
