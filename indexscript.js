@@ -722,6 +722,126 @@ document.addEventListener('DOMContentLoaded', function() {
               tableHTML += '</table>';
               return tableHTML;
             }
+            
+            // New function for the second remedial table
+            function createRemedialTable2(rowNumber, gradeValue, schoolYearValue, scholasticData) {
+              // Check for empty values
+              if (!gradeValue || !schoolYearValue || !scholasticData) {
+                return createEmptyRemedialTable2();
+              }
+
+              // Define getColumnIndex function within this scope
+              function getColumnIndex(letter) {
+                let index = 0;
+                for (let i = 0; i < letter.length; i++) {
+                  index = index * 26 + letter.charCodeAt(i) - 64;
+                }
+                return index - 1; // Subtract 1 because array indices start at 0
+              }
+              
+              // Helper function to safely get values from scholasticData
+              const safeGetValue = (index) => {
+                return (scholasticData[index] !== undefined && scholasticData[index] !== null) ? scholasticData[index] : '';
+              };
+              
+              let tableHTML = '<table class="remedial-table">';
+              
+              // Row 1 with merged cells and specified content
+              tableHTML += `
+                <tr>
+                  <td colspan="4" class="remedial-header">Remedial Classes</td>
+                  <td colspan="4" class="remedial-header">Conducted from:   ${safeGetValue(getColumnIndex('II'))}</td>
+                  <td colspan="5"></td>
+                  <td class="remedial-header">to:   ${safeGetValue(getColumnIndex('IJ'))}</td>
+                  <td colspan="5"></td>
+                </tr>
+              `;
+      
+              // Row 2 and 3 (merged)
+              tableHTML += `
+                <tr>
+                  <td colspan="5" rowspan="2" class="remedial-subheader">Learning Areas</td>
+                  <td colspan="3" rowspan="2" class="remedial-subheader">Final Rating</td>
+                  <td colspan="4" rowspan="2" class="remedial-subheader">Remedial Class Mark</td>
+                  <td colspan="5" rowspan="2" class="remedial-subheader">Recomputed Final Grade</td>
+                  <td colspan="2" rowspan="2" class="remedial-subheader">Remarks</td>
+                </tr>
+                <tr></tr>
+              `;
+      
+              // First row with data from columns IK, IL, IM, IN, IO
+              tableHTML += `
+                <tr>
+                  <td colspan="5">${safeGetValue(getColumnIndex('IK'))}</td>
+                  <td colspan="3">${safeGetValue(getColumnIndex('IL'))}</td>
+                  <td colspan="4">${safeGetValue(getColumnIndex('IM'))}</td>
+                  <td colspan="5">${safeGetValue(getColumnIndex('IN'))}</td>
+                  <td colspan="2">${safeGetValue(getColumnIndex('IO'))}</td>
+                </tr>
+              `;
+
+              // Second row with data from columns IP, IQ, IR, IS, IT
+              tableHTML += `
+                <tr>
+                  <td colspan="5">${safeGetValue(getColumnIndex('IP'))}</td>
+                  <td colspan="3">${safeGetValue(getColumnIndex('IQ'))}</td>
+                  <td colspan="4">${safeGetValue(getColumnIndex('IR'))}</td>
+                  <td colspan="5">${safeGetValue(getColumnIndex('IS'))}</td>
+                  <td colspan="2">${safeGetValue(getColumnIndex('IT'))}</td>
+                </tr>
+              `;
+      
+              tableHTML += '</table>';
+              return tableHTML;
+            }
+
+            function createEmptyRemedialTable2() {
+              let tableHTML = '<table class="remedial-table">';
+              
+              // Row 1 with merged cells and specified content
+              tableHTML += `
+                <tr>
+                  <td colspan="4" class="remedial-header">Remedial Classes</td>
+                  <td colspan="4" class="remedial-header">Conducted from</td>
+                  <td colspan="5"></td>
+                  <td class="remedial-header">to:</td>
+                  <td colspan="5"></td>
+                </tr>
+              `;
+      
+              // Row 2 and 3 (merged)
+              tableHTML += `
+                <tr>
+                  <td colspan="5" rowspan="2" class="remedial-subheader">Learning Areas</td>
+                  <td colspan="3" rowspan="2" class="remedial-subheader">Final Rating</td>
+                  <td colspan="4" rowspan="2" class="remedial-subheader">Remedial Class Mark</td>
+                  <td colspan="5" rowspan="2" class="remedial-subheader">Recomputed Final Grade</td>
+                  <td colspan="2" rowspan="2" class="remedial-subheader">Remarks</td>
+                </tr>
+                <tr></tr>
+              `;
+      
+              // Empty data rows
+              tableHTML += `
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="3"></td>
+                  <td colspan="4"></td>
+                  <td colspan="5"></td>
+                  <td colspan="2"></td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="3"></td>
+                  <td colspan="4"></td>
+                  <td colspan="5"></td>
+                  <td colspan="2"></td>
+                </tr>
+              `;
+      
+              tableHTML += '</table>';
+              return tableHTML;
+            }
       
             function createBox34(data, boxNumber) {
               const isBox3 = boxNumber === 3;
@@ -2262,14 +2382,15 @@ document.addEventListener('DOMContentLoaded', function() {
               } else {
                 remarks = "REMEDIAL";
               }
-            }
-          } else {
-            remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
+            
           }
-      
+        } else {
+          remarks = final === "" ? "" : (parseFloat(final) < 75 ? "FAILED" : "PASSED");
           
+        }
       
-          return { q1, q2, q3, q4, final, remarks };
+        
+        return { q1, q2, q3, q4, final, remarks };
         } catch (error) {
           
           return { q1: '', q2: '', q3: '', q4: '', final: '', remarks: '' };
