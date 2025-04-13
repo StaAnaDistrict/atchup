@@ -14,6 +14,8 @@ function openResultsWindow(
     syEndtMonth,
     systartDay,
     syEndDay,
+    adviserSignature,
+    principalSignature,
     birthYear,
     birthMonth,
     birthDay,
@@ -1249,7 +1251,7 @@ function openResultsWindow(
                 <td colspan="7"></td>
             </tr>
             <tr>
-                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">${adviserName || "N/A"}</td>
+                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">${adviserSignature || "N/A"}</td>
             </tr>
             <tr>
                 <td colspan="7" style="font-size: 11px; text-align: center; vertical-align: top;">Name of Adviser</td>
