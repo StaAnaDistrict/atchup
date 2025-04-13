@@ -104,7 +104,7 @@
         });
 
         async function checkDatabaseStatus() {
-            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/15G-OHD5QnTKrVgwTAxr2ukWgRC81RyF4k1FEcXXlQIQ/values/%27Learner%20Profiles%27!B3:AP?key=AIzaSyBc93X-MxPnJT6szhelvB2CrDS5t1DEo5o';
+            const apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/15G-OHD5QnTKrVgwTAxr2ukWgRC81RyF4k1FEcXXlQIQ/values/%27Learner%20Profiles%27!B3:AR?key=AIzaSyBc93X-MxPnJT6szhelvB2CrDS5t1DEo5o';
               const statusElement = document.getElementById('status');
         
               try {
@@ -130,7 +130,7 @@
                 try {
                     // dayn ha source
                     const [profileResponse, scholasticResponse, helperSheetResponse] = await Promise.all([
-                        fetch(`https://sheets.googleapis.com/v4/spreadsheets/15G-OHD5QnTKrVgwTAxr2ukWgRC81RyF4k1FEcXXlQIQ/values/'Learner Profiles'!B3:AP?key=AIzaSyBc93X-MxPnJT6szhelvB2CrDS5t1DEo5o`),
+                        fetch(`https://sheets.googleapis.com/v4/spreadsheets/15G-OHD5QnTKrVgwTAxr2ukWgRC81RyF4k1FEcXXlQIQ/values/'Learner Profiles'!B3:AR?key=AIzaSyBc93X-MxPnJT6szhelvB2CrDS5t1DEo5o`),
                         fetch(`https://sheets.googleapis.com/v4/spreadsheets/15G-OHD5QnTKrVgwTAxr2ukWgRC81RyF4k1FEcXXlQIQ/values/'ECCD Masterlist Results'!A2:HL?key=AIzaSyBc93X-MxPnJT6szhelvB2CrDS5t1DEo5o`),
                         fetch(`https://sheets.googleapis.com/v4/spreadsheets/15G-OHD5QnTKrVgwTAxr2ukWgRC81RyF4k1FEcXXlQIQ/values/'ECCD Helper Sheet Results'!E:BG?key=AIzaSyBc93X-MxPnJT6szhelvB2CrDS5t1DEo5o`)
                     ]);
