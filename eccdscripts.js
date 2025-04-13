@@ -158,6 +158,8 @@
                         const syEndtMonth = filteredProfileData[0][29];
                         const systartDay = filteredProfileData[0][27];  // Renamed to consistent variable
                         const syEndDay = filteredProfileData[0][30];
+                        const adviserSignature = filteredProfileData[0][41];
+                        const principalSignature = filteredProfileData[0][42];
                         
                         // Filter helper sheet data for the search input
                         const filteredHelperData = helperSheetData.values.find(row => row[0].trim().toLowerCase().includes(searchInput.trim().toLowerCase()));
@@ -454,7 +456,9 @@ openResultsWindow(
         syStartMonth, 
         syEndtMonth, 
         systartDay, 
-        syEndDay, 
+        syEndDay,
+        adviserSignature,
+        principalSignature
         birthYear, 
         birthMonth, 
         birthDay, 
