@@ -458,7 +458,7 @@ openResultsWindow(
         systartDay, 
         syEndDay,
         adviserSignature,
-        principalSignature
+        principalSignature,
         birthYear, 
         birthMonth, 
         birthDay, 
