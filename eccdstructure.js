@@ -1251,7 +1251,11 @@ function openResultsWindow(
                 <td colspan="7"></td>
             </tr>
             <tr>
-                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">${adviserSignature || "N/A"}</td>
+                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">
+                    ${adviserSignature && adviserSignature.match(/\.(jpg|jpeg|png|gif|bmp|webp)$/i) ? 
+                        `<img src="${adviserSignature}" style="max-width: 100%; max-height: 50px; object-fit: contain;" />` : 
+                        (adviserSignature || "N/A")}
+                </td>
             </tr>
             <tr>
                 <td colspan="7" style="font-size: 11px; text-align: center; vertical-align: top;">Name of Adviser</td>
@@ -1263,7 +1267,11 @@ function openResultsWindow(
                 <td colspan="7"></td>
             </tr>
             <tr>
-                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">${principalName || "N/A"}</td>
+                <td colspan="7" style="font-size: 13px; font-weight: bold; text-align: center; vertical-align: bottom; text-decoration: underline">
+                    ${principalSignature && principalSignature.match(/\.(jpg|jpeg|png|gif|bmp|webp)$/i) ? 
+                        `<img src="${principalSignature}" style="max-width: 100%; max-height: 65px; object-fit: contain;" />` : 
+                        (principalSignature || "N/A")}
+                </td>
             </tr>
             <tr>
                 <td colspan="7" style="font-size: 11px; text-align: center; vertical-align: top;">School Head</td>
